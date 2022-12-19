@@ -1,0 +1,6 @@
+export { default as TableActions } from './table-actions/index.vue'
+export { default as TableSearch } from './table-search/index.vue'
+export { default as TableColumnLabels } from './table-column-labels/index.vue'
+export { default as TableRowExpandButton } from './table-row-expand-button/index.vue'
+export { default as TableRowActions } from './table-row-actions/index.vue'
+export { default as TableRowText } from './table-row-text/index.vue'
