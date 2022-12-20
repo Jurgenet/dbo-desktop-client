@@ -63,8 +63,9 @@ module.exports = configure(function (/* ctx */) {
 
       env: {
         appName: env.APP_NAME ?? 'DBO Desktop Client',
-        version: '0.7.1',
-        // endpoints
+        version: '0.7.2',
+        // servers
+        serverName: 'Jupiter',
         MAIN_API_URL: env.MAIN_API_URL,
         IMAGES_URL: env.IMAGES_URL,
         TEST_API_URL: env.TEST_API_URL,

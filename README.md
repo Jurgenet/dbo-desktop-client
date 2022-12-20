@@ -1,6 +1,8 @@
 # dbo-desktop-client (Minerva)
 
-A Quasar2 Project
+> Quasar2 (Electron/Vue3/Pinia)
+
+A Quasar Project
 
 ## Install the dependencies
 

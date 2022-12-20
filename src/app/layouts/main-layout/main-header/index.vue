@@ -7,7 +7,7 @@
 
     <q-toolbar-title>
       <router-link :to="routes.ROOT" class="NoLinkStyles">
-        {{ appName }}
+        {{ appConsts.APP_NAME }}
       </router-link>
     </q-toolbar-title>
 
@@ -29,10 +29,11 @@
 
 import MenuButton from './menu-button.vue'
 
+import { appConsts } from 'src/app'
 import useAppStore from '@/stores/app'
 
 import { MarkersUi } from '@/modules/db/markers'
 
-const { appName, routes, toggleLeftDrawer } = useAppStore()
+const { routes, toggleLeftDrawer } = useAppStore()
 
 </script>

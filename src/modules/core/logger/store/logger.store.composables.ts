@@ -54,7 +54,7 @@ export default function useLoggerStore ({ moduleName }: IParams = {}) {
 
   function sendResponse (strOrArray: string | string[], sender: string | undefined) {
     messages.value.push(loggerDto.createMessage({
-      name: sender ?? moduleName ?? 'adam',
+      name: sender ?? moduleName ?? appConsts.serverName,
       avatar: 'https://cdn.quasar.dev/img/avatar4.jpg',
       text: _normalizeText(strOrArray),
       sent: true,

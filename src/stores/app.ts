@@ -28,7 +28,6 @@ function createAppStore () {
   }
 
   return {
-    appName: appConsts.APP_NAME,
     menuLinks: appConsts.MAIN_MENU_LINKS,
     routes: appConsts.ROUTES,
     ...asyncState,

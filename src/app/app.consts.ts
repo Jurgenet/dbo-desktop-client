@@ -1,5 +1,6 @@
 import { drawerDto } from '@/modules/gui/drawers'
 
+export const SERVER_NAME = process.env.serverName
 export const APP_NAME = process.env.appName
 export const APP_VERSION = process.env.version
 
