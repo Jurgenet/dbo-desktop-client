@@ -24,14 +24,7 @@
 
       <q-tab-panel name="database" class="column q-gutter-y-md">
 
-        <div class="row items-center ">
-          <div class="text-bold">Database on {{ isProdServer ? 'live server' : 'test server' }}</div>
-          <q-toggle
-            v-model="isProdServer"
-            :label="`switch to ${isProdServer ? 'test' : 'live'}`"
-            class="q-pa-sm"
-          />
-        </div>
+        <DbUi.DbToggle />
 
         <div>
           <q-btn label="do backup" @click="onDoBackup" />
@@ -51,12 +44,9 @@
 
 import { ref } from 'vue'
 
-import useAppStore from '@/stores/app'
+import { DbUi, dbApiRequests } from '@/modules/db'
 
-import { systemApiRequests } from '@/modules/db/system'
-
-const { isProdServer } = useAppStore()
-const apiRequests = systemApiRequests()
+const apiRequests = dbApiRequests()
 
 const activeTab = ref('main')
 

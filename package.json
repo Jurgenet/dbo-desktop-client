@@ -1,6 +1,6 @@
 {
   "name": "minerva",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "description": "DBO Desktop Client",
   "productName": "DBO Desktop Client",
   "author": "y.ivanchenko <jurgenet@gmail.com>",
@@ -13,12 +13,12 @@
     "build": "quasar build -m electron"
   },
   "dependencies": {
-    "@quasar/extras": "^1.15.6",
+    "@quasar/extras": "^1.15.9",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
     "pinia": "^2.0.11",
-    "quasar": "^2.10.2",
+    "quasar": "^2.11.3",
     "vue": "^3.0.0",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.0",

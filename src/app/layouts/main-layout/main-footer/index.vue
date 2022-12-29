@@ -6,7 +6,11 @@
 
       <q-toolbar class="col-8 bg-grey-3 text-black">
 
-        <q-toolbar-title>@</q-toolbar-title>
+        <!-- <q-toolbar-title>status:</q-toolbar-title> -->
+        <div class="row items-center">
+          <div class="text-h5 q-mr-md">status:</div>
+          <DbUi.DbStatus />
+        </div>
 
         <q-space />
 
@@ -41,6 +45,8 @@
 import TimeClock from './time-clock.vue'
 
 import useAppStore from '@/stores/app'
+
+import { DbUi } from '@/modules/db'
 
 const { routes } = useAppStore()
 

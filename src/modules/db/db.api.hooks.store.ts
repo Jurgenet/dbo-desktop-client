@@ -27,6 +27,8 @@ export default function useApiStore () {
 
   return {
     isProdServer,
+    serverName: computed(() => isProdServer.value ? 'live' : 'test'),
+    serverColor: computed(() => isProdServer.value ? 'green' : 'blue'),
     mainApiUrl,
     apiEndpoints,
   }
