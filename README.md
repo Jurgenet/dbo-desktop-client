@@ -28,6 +28,8 @@ yarn lint
 
 ```bash
 quasar build
+# or
+yarn docker-up
 ```
 
 ### Customize the configuration
