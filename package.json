@@ -9,8 +9,11 @@
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
     "web": "quasar dev",
-    "dev": "quasar dev -m electron --devtools",
-    "build": "quasar build -m electron"
+    "dev-desktop": "quasar dev -m electron --devtools",
+    "build-desktop": "quasar build -m electron",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "docker-up": "docker-compose up --build"
   },
   "dependencies": {
     "@quasar/extras": "^1.15.9",
