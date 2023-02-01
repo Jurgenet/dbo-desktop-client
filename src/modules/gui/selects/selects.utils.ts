@@ -4,6 +4,40 @@ interface ITitled {
   title: string
 }
 
+interface IIdentity {
+  _id: string
+}
+
+// TODO: compact methods
+
+export function getOptionById <T extends IIdentity> (optionList: T[], _id: string): T | undefined {
+  return optionList.filter((i: T) => i._id === _id)[0]
+}
+
+export function getOptionsByIds <T extends IIdentity> (optionList: T[], ids: string[] | string): T[] {
+  const options: Array<T | undefined> = []
+
+  if (typeof ids === 'string') {
+    const option = getOptionById(optionList, ids)
+
+    options.push(option)
+  } else {
+    ids.forEach((title: string) => {
+      const option = getOptionById(optionList, title)
+
+      if (option) {
+        options.push(option)
+      }
+    })
+  }
+
+  return _compact(options)
+}
+
+export function optionsToIds <T extends IIdentity> (optionList: T[]): string[] {
+  return optionList.map((option) => option._id)
+}
+
 function getOptionByTitle <T extends ITitled> (optionList: T[], title: string): T | undefined {
   return optionList.filter((i: T) => i.title === title)[0]
 }

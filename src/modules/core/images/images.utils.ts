@@ -1,10 +1,10 @@
-// const IMAGES_URL = process.env.IMAGES_URL
-const IMAGES_URL = ''
+// const imagesUrl = process.env.imagesUrl
+const imagesUrl = ''
 
 export function getDefaultImage () {
-  return `${IMAGES_URL}no-image.png`
+  return `${imagesUrl}no-image.png`
 }
 
 export function getImageStorageSrc (imageName: string) {
-  return `${IMAGES_URL}${imageName}`
+  return `${imagesUrl}${imageName}`
 }

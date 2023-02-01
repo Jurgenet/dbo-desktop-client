@@ -171,7 +171,7 @@ async function saveNote () {
 
 .actionControls
   position: fixed
-  bottom: 144px
+  bottom: 137px
   border-top: 1px dashed $grey-4
   width: 100%
 

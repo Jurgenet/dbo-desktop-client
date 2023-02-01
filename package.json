@@ -1,18 +1,17 @@
 {
   "name": "minerva",
-  "version": "0.7.3",
-  "description": "DBO Desktop Client",
-  "productName": "DBO Desktop Client",
+  "version": "0.7.4",
+  "description": "DBO Client",
+  "productName": "Minerva",
   "author": "y.ivanchenko <jurgenet@gmail.com>",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.ts,.vue ./",
     "test": "echo \"No test specified\" && exit 0",
-    "web": "quasar dev",
-    "dev-desktop": "quasar dev -m electron --devtools",
-    "build-desktop": "quasar build -m electron",
-    "dev": "quasar dev",
+    "dev": "quasar dev --watch",
     "build": "quasar build",
+    "dev-electron": "quasar dev -m electron --devtools",
+    "build-electron": "quasar build -m electron",
     "docker-up": "docker-compose up --build"
   },
   "dependencies": {
@@ -51,5 +50,9 @@
     "node": "^18 || ^16 || ^14.19",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  }
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "iOS 12"
+  ]
 }

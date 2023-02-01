@@ -11,8 +11,8 @@ export function createDocRequests <T extends { _id: string }> (params: { endpoin
     return axios.get(endpointRef.value)
   }
 
-  function fetchOne (_id: string) {
-    return axios.get(`${endpointRef.value}/${_id}`)
+  function fetchOne (id: string) {
+    return axios.get(`${endpointRef.value}/${id}`)
   }
 
   function createOne (doc: T) {
@@ -24,11 +24,11 @@ export function createDocRequests <T extends { _id: string }> (params: { endpoin
   }
 
   function removeOne (idOrEntity: string | T) {
-    const _id = typeof idOrEntity === 'string'
+    const id = typeof idOrEntity === 'string'
       ? idOrEntity
       : idOrEntity._id
 
-    return axios.delete(`${endpointRef.value}/${_id}`)
+    return axios.delete(`${endpointRef.value}/${id}`)
   }
 
   return {
@@ -70,14 +70,14 @@ export function createDocService <T extends { _id: string }> ({ moduleName, apiR
     return result
   }
 
-  async function fetchOne (_id: string) {
+  async function fetchOne (id: string) {
     const requestName = 'request: fetchOne'
     const result = { doc: null, message: '' }
 
     loggerStore.sendNotice(requestName, moduleName)
 
     try {
-      const { data } = await apiRequests.fetchOne(_id)
+      const { data } = await apiRequests.fetchOne(id)
 
       result.doc = data.result
       result.message = data.message
@@ -142,12 +142,12 @@ export function createDocService <T extends { _id: string }> ({ moduleName, apiR
   async function removeOne (docOrId: T | string) {
     const requestName = 'request: removeOne'
     const result = { message: '' }
-    const _id = typeof docOrId === 'string' ? docOrId : docOrId._id
+    const id = typeof docOrId === 'string' ? docOrId : docOrId._id
 
-    loggerStore.sendNotice([requestName, _id], moduleName)
+    loggerStore.sendNotice([requestName, id], moduleName)
 
     try {
-      const { data } = await apiRequests.removeOne(_id)
+      const { data } = await apiRequests.removeOne(id)
 
       result.message = data.message
     } catch (error) {

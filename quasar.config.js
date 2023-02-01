@@ -12,6 +12,8 @@ const { configure } = require('quasar/wrappers')
 const path = require('path')
 const env = require('dotenv').config().parsed
 
+
+
 module.exports = configure(function (/* ctx */) {
   return {
     eslint: {
@@ -62,14 +64,12 @@ module.exports = configure(function (/* ctx */) {
       },
 
       env: {
-        appName: env.APP_NAME ?? 'DBO Desktop Client',
-        version: '0.7.3',
+        appName: env.APP_NAME,
+        version: '1.0.0',
         // servers
-        serverName: 'Jupiter',
-        MAIN_API_URL: env.MAIN_API_URL,
-        IMAGES_URL: env.IMAGES_URL,
-        TEST_API_URL: env.TEST_API_URL,
-        TEST_IMAGES_URL: env.TEST_IMAGES_URL,
+        serverName: env.SERVER_NAME,
+        apiUrl: env.MAIN_API_URL,
+        testApiUrl: env.TEST_API_URL,
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'
@@ -218,7 +218,7 @@ module.exports = configure(function (/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: 'q-client',
+        appId: env.APP_NAME,
       },
     },
 
