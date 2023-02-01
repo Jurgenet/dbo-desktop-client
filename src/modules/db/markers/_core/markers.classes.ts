@@ -1,6 +1,7 @@
 import { IMarkerDto, markersStyleUtils } from '@/modules/db/markers'
 
 export interface IMarker {
+  _id: string
   dto: IMarkerDto
 }
 

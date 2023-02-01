@@ -15,12 +15,12 @@ export function createDocRequests <T extends { _id: string }> (params: { endpoin
     return axios.get(`${endpointRef.value}/${id}`)
   }
 
-  function createOne (doc: T) {
-    return axios.post(endpointRef.value, doc)
+  function createOne (dto: T) {
+    return axios.post(endpointRef.value, dto)
   }
 
-  function updateOne (doc: T) {
-    return axios.patch(`${endpointRef.value}/${doc._id}`, doc)
+  function updateOne (dto: T) {
+    return axios.patch(`${endpointRef.value}/${dto._id}`, dto)
   }
 
   function removeOne (idOrEntity: string | T) {
@@ -92,14 +92,14 @@ export function createDocService <T extends { _id: string }> ({ moduleName, apiR
     return result
   }
 
-  async function createOne (doc: T) {
+  async function createOne (dto: T) {
     const requestName = 'request: createOne'
     const result = { doc: null, message: '' }
 
-    loggerStore.sendNotice([requestName, JSON.stringify(doc)], moduleName)
+    loggerStore.sendNotice([requestName, JSON.stringify(dto)], moduleName)
 
     try {
-      const { data } = await apiRequests.createOne(doc)
+      const { data } = await apiRequests.createOne(dto)
 
       result.doc = data.result
       result.message = data.message
@@ -114,17 +114,17 @@ export function createDocService <T extends { _id: string }> ({ moduleName, apiR
     return result
   }
 
-  async function updateOne (doc: T) {
+  async function updateOne (dto: T) {
     const requestName = 'request: updateOne'
     const result = {
       doc: null,
       message: '',
     }
 
-    loggerStore.sendNotice([requestName, JSON.stringify(doc)], moduleName)
+    loggerStore.sendNotice([requestName, JSON.stringify(dto)], moduleName)
 
     try {
-      const { data } = await apiRequests.updateOne(doc)
+      const { data } = await apiRequests.updateOne(dto)
 
       result.doc = data.result
       result.message = data.message

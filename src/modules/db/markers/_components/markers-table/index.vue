@@ -71,7 +71,7 @@ function onCreateOrEdit (markerRow: marekrsClasses.IMarker | null) {
     ? markersFabrics.clone(markerRow)
     : markersFabrics.create({ _id: markersStore.filter })
 
-  useMarkersDialogCreation({ isCreating, marker: marker })
+  useMarkersDialogCreation({ isCreating, marker })
     .onOk(({ appliedMarker }: { appliedMarker: marekrsClasses.IMarker }) => {
       if (isCreating) {
         markersStore.createOne(appliedMarker)

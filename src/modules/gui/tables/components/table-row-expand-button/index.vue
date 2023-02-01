@@ -3,8 +3,8 @@
 <q-td auto-width>
   <q-btn
     :icon="props.expand ? 'remove' : 'add'"
-    :color="props.row.text ? 'primary' : 'grey-5'"
-    :disable="!props.row.text"
+    :color="props.row.dto.text ? 'primary' : 'grey-5'"
+    :disable="!props.row.dto.text"
     size="sm"
     round
     dense
@@ -18,7 +18,7 @@
 
 const props = defineProps<{
   expand: boolean
-  row: { text: string }
+  row: { dto: { text: string } }
 }>()
 
 // eslint-disable-next-line func-call-spacing

@@ -15,33 +15,33 @@
 <!-- link -->
 <div v-else-if="col.name === 'link'" class="row no-wrap">
   <ButtonsUi.TypedButton
-    v-show="row.link"
+    v-show="row.dto.link"
     :type="ButtonsUi.TypedButtonType.TableCellActionReference"
-    @click="emits('copy-reference', row.link)"
+    @click="emits('copy-reference', row.dto.link)"
   >
-    <q-tooltip class="text-caption">{{ row.link }}</q-tooltip>
+    <q-tooltip class="text-caption">{{ row.dto.link }}</q-tooltip>
   </ButtonsUi.TypedButton>
 </div>
 
 <!-- location -->
 <div v-else-if="col.name === 'location'" class="row no-wrap">
   <ButtonsUi.TypedButton
-    v-show="row.location"
+    v-show="row.dto.location"
     :type="ButtonsUi.TypedButtonType.TableCellActionReference"
-    @click="emits('copy-reference', row.location)"
+    @click="emits('copy-reference', row.dto.location)"
   >
-    <q-tooltip class="text-caption">{{ row.location }}</q-tooltip>
+    <q-tooltip class="text-caption">{{ row.dto.location }}</q-tooltip>
   </ButtonsUi.TypedButton>
 </div>
 
 <!-- pasword -->
 <div v-else-if="col.name === 'password'" class="row no-wrap">
   <ButtonsUi.TypedButton
-    v-show="row.password"
+    v-show="row.dto.password"
     :type="ButtonsUi.TypedButtonType.TableCellActionPassword"
-    @click="emits('copy-reference', row.password)"
+    @click="emits('copy-reference', row.dto.password)"
   >
-    <q-tooltip class="text-caption">{{ row.password }}</q-tooltip>
+    <q-tooltip class="text-caption">{{ row.dto.password }}</q-tooltip>
   </ButtonsUi.TypedButton>
 </div>
 
@@ -58,13 +58,13 @@ import { ButtonsUi } from '@/modules/gui/buttons'
 
 defineProps<{
   col: any
-  row: { _id: string, link?: string, location?: string, password?: string }
+  row: { _id: string, dto: { link?: string, location?: string, password?: string } }
 }>()
 
 // eslint-disable-next-line func-call-spacing
 const emits = defineEmits<{
-  (e: 'edit', row: { _id: string, link?: string }): void
-  (e: 'remove', _id: string): void
+  (e: 'edit', row: { _id: string, dto: { link?: string } }): void
+  (e: 'remove', id: string): void
   (e: 'copy-reference', reference?: string): void
 }>()
 

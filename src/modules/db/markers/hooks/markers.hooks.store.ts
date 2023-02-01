@@ -5,8 +5,8 @@ import { useAsyncState } from '@/modules/state'
 import {
   markersDto,
   markersClasses,
-  markersApiService,
   markersFabrics,
+  markersApiService,
 } from '@/modules/db/markers'
 
 export default function useMarkersStore () {
@@ -23,7 +23,7 @@ export default function useMarkersStore () {
     return asyncState.runTask(async () => {
       const { docs: markerList } = await apiService.fetchAll()
 
-      markers.value = markerList.map((doc: markersDto.IMarkerDto) => markersFabrics.create(doc))
+      markers.value = markerList.map((dto: markersDto.IMarkerDto) => markersFabrics.create(dto))
     }, params)
   }
 

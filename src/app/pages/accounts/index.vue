@@ -3,7 +3,7 @@
 <q-page class="q-pa-md">
   <q-table
     :loading="accountsStore.isBusy"
-    :rows="accountsStore.docs"
+    :rows="accountsStore.accounts"
     :columns="accountsTableUtils.getColumns()"
     :rows-per-page-options="[15]"
     :filter="accountsStore.filter"
@@ -37,12 +37,12 @@
         />
 
         <q-td v-for="col in props.cols" :key="col.name" :props="props">
-        <TablesUi.TableRowActions
-          v-bind="{ col, row: props.row }"
-          @edit="onCreateOrEdit"
-          @remove="onRemove"
-          @copy-reference="onCopyLink"
-        />
+          <TablesUi.TableRowActions
+            v-bind="{ col, row: props.row }"
+            @edit="onCreateOrEdit"
+            @remove="onRemove"
+            @copy-reference="onCopyLink"
+          />
       </q-td>
 
       </q-tr>
@@ -67,29 +67,34 @@ import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
 import { PreloadersUi } from '@/modules/gui/preloaders'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import {
-  accountsDto,
+  accountsConsts,
+  accountsClasses,
+  accountsFabrics,
   useAccountsDialogCreation,
   accountsTableUtils,
 } from '@/modules/db/accounts'
 
 const accountsStore = useAccountsStore()
 
-function onCreateOrEdit (account: accountsDto.IAccount | null) {
-  const _account = account ? { ...account } : accountsDto.create({ title: accountsStore.filter })
+function onCreateOrEdit (accountRow: accountsClasses.IAccount | null) {
+  const isCreating = accountRow === null
+  const account = accountRow
+    ? accountsFabrics.clone(accountRow)
+    : accountsFabrics.create({ title: accountsStore.filter })
 
-  useAccountsDialogCreation({ account: _account })
-    .onOk(({ appliedAccount }: { appliedAccount: accountsDto.IAccount }) => {
-      if (appliedAccount._id) {
-        accountsStore.updateOne(appliedAccount)
-      } else {
+  useAccountsDialogCreation({ isCreating, account })
+    .onOk(({ appliedAccount }: { appliedAccount: accountsClasses.IAccount }) => {
+      if (isCreating) {
         accountsStore.createOne(appliedAccount)
+      } else {
+        accountsStore.updateOne(appliedAccount)
       }
     })
 }
 
-function onRemove (_id: string) {
-  useCustomDialogConfirmation({ message: 'Are you sure?' })
-    .onOk(() => accountsStore.removeOne(_id))
+function onRemove (id: string) {
+  useCustomDialogConfirmation({ message: accountsConsts.MESSAGES.DELETE_CONFIRMATION })
+    .onOk(() => accountsStore.removeOne(id))
 }
 
 function onCopyLink (link: string) {
