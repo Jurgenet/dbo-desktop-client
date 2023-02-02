@@ -1,7 +1,7 @@
 import { IKnowledgeDto } from "./knowledges.dto"
 
 export interface IKnowledge {
-  _id: string
+  _id?: string
   dto: IKnowledgeDto
 }
 
@@ -18,8 +18,8 @@ export enum IKnowledgeTypes {
   Post = 'post',
 }
 
-export class Knowledge {
-  _id: string
+export class Knowledge implements IKnowledge {
+  _id?: string
   dto: IKnowledgeDto
 
   constructor (dto: IKnowledgeDto) {

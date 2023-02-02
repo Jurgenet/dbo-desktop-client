@@ -1,11 +1,14 @@
-export * as ordersDto from './orders.dto'
+export * as ordersConsts from './_core/orders.consts'
+export * as ordersDto from './_core/orders.dto'
+export * as ordersClasses from './_core/orders.classes'
+export * as ordersFabrics from './_core/orders.fabrics'
 
-export * as OrdersUi from './components'
+export * as OrdersUi from './_components'
 
-export { default as ordersApiRequests } from './orders.api.requests'
-export { default as ordersApiService } from './orders.api.service'
+export { default as ordersApiRequests } from './api/orders.api.requests'
+export { default as ordersApiService } from './api/orders.api.service'
 
-export { default as useOrdersStore } from './orders.hooks.store'
-export { default as useOrdersDialogCreation } from './orders.hooks.dialogs.creation'
+export { default as useOrdersStore } from './hooks/orders.hooks.store'
+export { default as useOrdersDialogCreation } from './hooks/orders.hooks.dialogs.creation'
 
-export * as ordersTableUtils from './orders.utils.table'
+export * as ordersTableUtils from './utils/orders.utils.table'

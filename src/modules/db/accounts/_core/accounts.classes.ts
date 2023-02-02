@@ -1,12 +1,12 @@
 import { IAccountDto } from '@/modules/db/accounts'
 
 export interface IAccount {
-  _id: string
+  _id?: string
   dto: IAccountDto
 }
 
-export class Account {
-  _id: string
+export class Account implements IAccount {
+  _id?: string
   dto: IAccountDto
 
   constructor (dto: IAccountDto) {

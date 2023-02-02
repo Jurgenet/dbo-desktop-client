@@ -4,12 +4,12 @@
 
   <q-table
     :loading="ordersStore.isBusy"
-    :rows="ordersStore.docs"
+    :rows="ordersStore.orders"
     :columns="ordersTableUtils.getColumns()"
     :rows-per-page-options="[15]"
     :filter="ordersStore.filter"
     row-key="_id"
-    title="Accounts"
+    title="Orders"
     @row-dblclick.stop
   >
 
@@ -68,29 +68,34 @@ import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
 import { PreloadersUi } from '@/modules/gui/preloaders'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import {
-  ordersDto,
+  ordersConsts,
+  ordersClasses,
+  ordersFabrics,
   useOrdersDialogCreation,
   ordersTableUtils,
 } from '@/modules/db/orders'
 
 const ordersStore = useOrdersStore()
 
-function onCreateOrEdit (order: ordersDto.IOrder | null) {
-  const _order = order ? { ...order } : ordersDto.create({ title: ordersStore.filter })
+function onCreateOrEdit (orderRow: ordersClasses.IOrder | null) {
+  const isCreating = orderRow === null
+  const order = orderRow
+    ? ordersFabrics.clone(orderRow)
+    : ordersFabrics.create({ title: ordersStore.filter })
 
-  useOrdersDialogCreation({ order: _order })
-    .onOk(({ appliedOrder }: { appliedOrder: ordersDto.IOrder }) => {
-      if (appliedOrder._id) {
-        ordersStore.updateOne(appliedOrder)
-      } else {
+  useOrdersDialogCreation({ isCreating, order })
+    .onOk(({ appliedOrder }: { appliedOrder: ordersClasses.IOrder }) => {
+      if (isCreating) {
         ordersStore.createOne(appliedOrder)
+      } else {
+        ordersStore.updateOne(appliedOrder)
       }
     })
 }
 
-function onRemove (_id: string) {
-  useCustomDialogConfirmation({ message: 'Are you sure?' })
-    .onOk(() => ordersStore.removeOne(_id))
+function onRemove (id: string) {
+  useCustomDialogConfirmation({ message: ordersConsts.MESSAGES.DELETE_CONFIRMATION })
+    .onOk(() => ordersStore.removeOne(id))
 }
 
 function onCopyLink (link: string) {
@@ -98,9 +103,3 @@ function onCopyLink (link: string) {
 }
 
 </script>
-
-<style lang="sass">
-
-//
-
-</style>

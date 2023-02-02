@@ -17,6 +17,7 @@ export default function useKnowledgesStore () {
   const count = computed(() => knowledges.value.length)
   const ids = computed(() => knowledges.value.map((knowledge) => knowledge._id))
 
+  // crud
   async function fetchAll (params: unknown = {}) {
     return asyncState.runTask(async () => {
       const { docs: knowledgeList } = await apiService.fetchAll()

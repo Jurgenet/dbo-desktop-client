@@ -2,7 +2,7 @@ import { Dialog } from 'quasar'
 
 import { knowledgesClasses, KnowledgesUi } from '@/modules/db/knowledges'
 
-export default function useKnowledgesDialogCreation ({ isCreating, knowledge }: { knowledge: knowledgesClasses.IKnowledge }) {
+export default function useKnowledgesDialogCreation ({ isCreating, knowledge }: { isCreating: boolean, knowledge: knowledgesClasses.IKnowledge }) {
   return Dialog.create({
     component: KnowledgesUi.KnowledgeDialogCreation,
     componentProps: {
