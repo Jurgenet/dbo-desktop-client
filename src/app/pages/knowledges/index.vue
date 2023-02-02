@@ -4,12 +4,12 @@
 
   <q-table
     :loading="knowledgesStore.isBusy"
-    :rows="knowledgesStore.docs"
+    :rows="knowledgesStore.knowledges"
     :columns="knowledgesTableUtils.getColumns()"
     :rows-per-page-options="[15]"
     :filter="knowledgesStore.filter"
     row-key="_id"
-    title="Accounts"
+    title="Knowledges"
     @row-dblclick.stop
   >
 
@@ -68,29 +68,34 @@ import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
 import { PreloadersUi } from '@/modules/gui/preloaders'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import {
-  knowledgesDto,
+  knowledgesConsts,
+  knowledgesClasses,
+  knowledgesFabrics,
   useKnowledgesDialogCreation,
   knowledgesTableUtils,
 } from '@/modules/db/knowledges'
 
 const knowledgesStore = useKnowledgesStore()
 
-function onCreateOrEdit (knowledge: knowledgesDto.IKnowledge | null) {
-  const _knowledge = knowledge ? { ...knowledge } : knowledgesDto.create({ title: knowledgesStore.filter })
+function onCreateOrEdit (knowledgeRow: knowledgesClasses.IKnowledge | null) {
+  const isCreating = knowledgeRow === null
+  const knowledge = knowledgeRow
+    ? knowledgesFabrics.clone(knowledgeRow)
+    : knowledgesFabrics.create({ title: knowledgesStore.filter })
 
-  useKnowledgesDialogCreation({ knowledge: _knowledge })
-    .onOk(({ appliedKnowledge }: { appliedKnowledge: knowledgesDto.IKnowledge }) => {
-      if (appliedKnowledge._id) {
-        knowledgesStore.updateOne(appliedKnowledge)
-      } else {
+  useKnowledgesDialogCreation({ isCreating, knowledge })
+    .onOk(({ appliedKnowledge }: { appliedKnowledge: knowledgesClasses.IKnowledge }) => {
+      if (isCreating) {
         knowledgesStore.createOne(appliedKnowledge)
+      } else {
+        knowledgesStore.updateOne(appliedKnowledge)
       }
     })
 }
 
-function onRemove (_id: string) {
-  useCustomDialogConfirmation({ message: 'Are you sure?' })
-    .onOk(() => knowledgesStore.removeOne(_id))
+function onRemove (id: string) {
+  useCustomDialogConfirmation({ message: knowledgesConsts.MESSAGES.DELETE_CONFIRMATION })
+    .onOk(() => knowledgesStore.removeOne(id))
 }
 
 function onCopyLink (link: string) {
