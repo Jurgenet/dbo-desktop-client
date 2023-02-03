@@ -60,12 +60,12 @@ import { useNotesStore } from '@/stores/notes'
 
 import { TabsUi } from '@/modules/gui/tabs'
 import { PreloadersUi } from '@/modules/gui/preloaders'
-import { NotesUi, notesDto } from '@/modules/db/notes'
+import { NotesUi, notesClasses } from '@/modules/db/notes'
 
 const notesStore = useNotesStore()
 
-function onOpenTab (note: notesDto.INote, isInBackground: boolean) {
-  notesStore.createTab(note.title, note, isInBackground)
+function onOpenTab (note: notesClasses.INote, isInBackground: boolean) {
+  notesStore.createTab(note.dto.title, note, isInBackground)
 }
 
 </script>

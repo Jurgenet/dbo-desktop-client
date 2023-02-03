@@ -56,7 +56,7 @@ import { PreloadersUi } from '@/modules/gui/preloaders'
 import { ButtonsUi } from '@/modules/gui/buttons'
 import {
   markersConsts,
-  marekrsClasses,
+  markersClasses,
   markersFabrics,
   MarkersUi,
   useMarkersDialogCreation,
@@ -65,14 +65,14 @@ import {
 
 const markersStore = useMarkersStore()
 
-function onCreateOrEdit (markerRow: marekrsClasses.IMarker | null) {
+function onCreateOrEdit (markerRow: markersClasses.IMarker | null) {
   const isCreating = markerRow === null
   const marker = markerRow
     ? markersFabrics.clone(markerRow)
     : markersFabrics.create({ _id: markersStore.filter })
 
   useMarkersDialogCreation({ isCreating, marker })
-    .onOk(({ appliedMarker }: { appliedMarker: marekrsClasses.IMarker }) => {
+    .onOk(({ appliedMarker }: { appliedMarker: markersClasses.IMarker }) => {
       if (isCreating) {
         markersStore.createOne(appliedMarker)
       } else {
@@ -86,7 +86,7 @@ async function onRemove (id: string) {
     .onOk(() => markersStore.removeOne(id))
 }
 
-function onCopyStyles (styles: marekrsClasses.IMarkerStyles) {
+function onCopyStyles (styles: markersClasses.IMarkerStyles) {
   markersStore.copyStylesToBuffer(styles)
 }
 

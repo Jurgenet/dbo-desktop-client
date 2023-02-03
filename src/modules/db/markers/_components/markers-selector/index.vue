@@ -23,15 +23,9 @@
     class="q-ml-md"
     label="create marker"
     color="primary"
-    @click="isOpenMarkerCreationDialog = true"
+    @click="onCreateMarker"
   />
 </div>
-
-<MarkersUi.MarkerDialogCreation
-  v-model="isOpenMarkerCreationDialog"
-  :marker="newMarker"
-  @apply="onCreateMarker"
-/>
 
 </template>
 
@@ -51,7 +45,11 @@ import { ref, watch } from 'vue'
 import { useMarkersStore } from '@/stores/markers'
 
 import { selectsUtils } from '@/modules/gui/selects'
-import { markersClasses, markersFabrics, MarkersUi } from '@/modules/db/markers'
+import {
+  markersClasses,
+  markersFabrics,
+  useMarkersDialogCreation,
+} from '@/modules/db/markers'
 
 const props = defineProps<{
   markersIds: string[]
@@ -65,7 +63,6 @@ const emits = defineEmits<{
 
 const markersStore = await useMarkersStore()
 
-const isOpenMarkerCreationDialog = ref(false)
 const markers = ref(markersStore.getMarkersByIds(props.markersIds))
 const filteredMarkers = ref(markersStore.markers.value)
 const newMarker = ref(markersFabrics.create())
@@ -80,10 +77,12 @@ function onTypingMarkerId (markerId: string) {
   }
 }
 
-function onCreateMarker (marker: markersClasses.IMarker) {
-  markersStore.createOne(marker)
-  markers.value.push(marker)
-  isOpenMarkerCreationDialog.value = false
+function onCreateMarker () {
+  useMarkersDialogCreation({ isCreating: true, marker: newMarker.value })
+    .onOk(({ appliedMarker }: { appliedMarker: markersClasses.IMarker }) => {
+      markersStore.createOne(appliedMarker)
+      markers.value.push(appliedMarker.dto)
+    })
 }
 
 /**
