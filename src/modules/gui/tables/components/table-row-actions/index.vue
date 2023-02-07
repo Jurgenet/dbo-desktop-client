@@ -45,6 +45,12 @@
   </ButtonsUi.TypedButton>
 </div>
 
+<div v-else-if="col.type === 'flag'" class="row no-wrap">
+  <q-badge :color="col.value ? 'green-4' : 'red-4'">
+    {{ col.value ? '+' : '-' }}
+  </q-badge>
+</div>
+
 <!-- other as is as-->
 <template v-else>
   {{ col.value }}

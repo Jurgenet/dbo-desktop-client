@@ -1,4 +1,5 @@
 import { INote, INoteLink, Note } from './notes.classes'
+import { DEFAULT_MARKER } from './notes.consts'
 import { INoteDto } from './notes.dto'
 
 export function create (dto: Partial<INoteDto>): INote {
@@ -6,7 +7,7 @@ export function create (dto: Partial<INoteDto>): INote {
     title: 'empty',
     text: '',
     links: [],
-    markers: [],
+    markers: [DEFAULT_MARKER],
     isPinned: false,
     ...dto,
   })
