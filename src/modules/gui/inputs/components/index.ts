@@ -1,1 +1,1 @@
-export { default as Regular } from './regular-input/index.vue'
+export { default as RegularInput } from './regular-input/index.vue'

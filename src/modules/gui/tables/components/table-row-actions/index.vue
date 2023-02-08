@@ -45,10 +45,14 @@
   </ButtonsUi.TypedButton>
 </div>
 
+<!-- rating -->
+<div v-else-if="col.name === 'rating'">
+  <RatingsUi.RegularRating :model-value="row.dto.rating" readonly />
+</div>
+
 <div v-else-if="col.type === 'flag'" class="row no-wrap">
-  <q-badge :color="col.value ? 'green-4' : 'red-4'">
-    {{ col.value ? '+' : '-' }}
-  </q-badge>
+  <q-icon v-if="col.value" name="check_circle_outline" size="1.5em" color="green-4" />
+  <q-icon v-else name="highlight_off" size="1.5em" color="red-4" />
 </div>
 
 <!-- other as is as-->
@@ -61,10 +65,11 @@
 <script setup lang="ts">
 
 import { ButtonsUi } from '@/modules/gui/buttons'
+import { RatingsUi } from '@/modules/gui/ratings'
 
 defineProps<{
   col: any
-  row: { _id: string, dto: { link?: string, location?: string, password?: string } }
+  row: { _id: string, dto: { link?: string, location?: string, password?: string, rating?: number } }
 }>()
 
 // eslint-disable-next-line func-call-spacing

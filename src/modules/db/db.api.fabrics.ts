@@ -31,12 +31,22 @@ export function createDocRequests <T extends { _id: string }> (params: { endpoin
     return axios.delete(`${endpointRef.value}/${id}`)
   }
 
+  function findByMarkers (markers: string[]) {
+    return axios.post(`${endpointRef.value}/findByMarkers`, { markers })
+  }
+
+  function findByText (text: string) {
+    return axios.get(`${endpointRef.value}/findByText/${text}`)
+  }
+
   return {
     fetchAll,
     fetchOne,
     createOne,
     updateOne,
     removeOne,
+    findByMarkers,
+    findByText,
   }
 }
 
@@ -161,11 +171,59 @@ export function createDocService <T extends { _id: string }> ({ moduleName, apiR
     return result
   }
 
+  async function findByMarkers (markers: string[]) {
+    const requestName = 'request: findByMarker'
+    const result = { docs: [], message: '', count: 0 }
+
+    loggerStore.sendNotice([requestName], moduleName)
+
+    try {
+      const { data } = await apiRequests.findByMarkers(markers)
+
+      result.docs = data.result
+      result.message = data.message
+      result.count = data.count
+    } catch (error) {
+      const { message } = errorsUtils.handleError(error)
+
+      result.message = message
+    } finally {
+      loggerStore.sendResponse([requestName, `message: ${result.message}`], moduleName)
+    }
+
+    return result
+  }
+
+  async function findByText (text: string) {
+    const requestName = 'request: findByText'
+    const result = { docs: [], message: '', count: 0 }
+
+    loggerStore.sendNotice([requestName], moduleName)
+
+    try {
+      const { data } = await apiRequests.findByText(text)
+
+      result.docs = data.result
+      result.message = data.message
+      result.count = data.count
+    } catch (error) {
+      const { message } = errorsUtils.handleError(error)
+
+      result.message = message
+    } finally {
+      loggerStore.sendResponse([requestName, `message: ${result.message}`], moduleName)
+    }
+
+    return result
+  }
+
   return {
     fetchAll,
     fetchOne,
     createOne,
     updateOne,
     removeOne,
+    findByMarkers,
+    findByText,
   }
 }

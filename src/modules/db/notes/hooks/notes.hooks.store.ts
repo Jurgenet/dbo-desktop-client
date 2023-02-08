@@ -1,4 +1,4 @@
-import { ref, Ref, computed } from 'vue'
+import { ref, Ref, computed, watch } from 'vue'
 
 import { selectsUtils } from '@/modules/gui/selects'
 import { useAsyncState } from '@/modules/state'
@@ -60,8 +60,13 @@ export default function useNotesStore () {
   }
 
   // filters
-  const queryMarkers = ref([])
+  const isSearchByMarkers = ref(true)
+  const searchQuery: Ref<string[] | string> = ref([])
   const filter = ref('')
+
+  watch(isSearchByMarkers, () => {
+    isSearchByMarkers.value ? searchQuery.value = [] : searchQuery.value = ''
+  })
 
   const filteredNotes = computed(() => {
     if (filter.value === null || filter.value === '') {
@@ -74,6 +79,20 @@ export default function useNotesStore () {
     })
   })
 
+  async function search () {
+    return asyncState.runTask(async () => {
+      let result = null
+
+      if (isSearchByMarkers.value) {
+        result = await apiService.findByMarkers(searchQuery.value)
+      } else {
+        result = await apiService.findByText(searchQuery.value)
+      }
+
+      notes.value = result.docs.map((dto: notesDto.INoteDto) => notesFabrics.create(dto))
+    })
+  }
+
   return {
     ...asyncState,
     ...usePagination({
@@ -85,9 +104,11 @@ export default function useNotesStore () {
     count,
     ids,
     // filters
-    queryMarkers,
+    isSearchByMarkers,
+    searchQuery,
     filter,
     filteredNotes,
+    search,
     // crud
     fetchAll,
     createOne,

@@ -45,8 +45,9 @@
           label="Author"
         />
 
-        <InputsUi.Regular
+        <q-select
           v-model="knowledgeRef.dto.lang"
+          :options="knowledgeLangs"
           label="Lang"
         />
 
@@ -65,26 +66,12 @@
           label="Link"
         />
 
-        <q-input
-          v-model="knowledgeRef.dto.isActive"
-          placeholder="isActive"
-          dense
-          autofocus
-        />
-
-        <q-input
-          v-model="knowledgeRef.dto.isOnline"
-          placeholder="isOnline"
-          dense
-          autofocus
-        />
-
-        <q-input
-          v-model="knowledgeRef.dto.isDone"
-          placeholder="isDone"
-          dense
-          autofocus
-        />
+        <div class="q-pa-sm row justify-around items-center">
+          <q-toggle v-model="knowledgeRef.dto.isActive" label="Active" left-label />
+          <q-toggle v-model="knowledgeRef.dto.isOnline" label="OnLine" left-label />
+          <q-toggle v-model="knowledgeRef.dto.isDone" label="Done" left-label />
+          <RatingsUi.RegularRating v-model="knowledgeRef.dto.rating" size="3.5em" />
+        </div>
 
         <InputsUi.Regular
           v-model="knowledgeRef.dto.text"
@@ -113,10 +100,12 @@ import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
 import { InputsUi } from '@/modules/gui/inputs'
+import { RatingsUi } from '@/modules/gui/ratings'
 
 import { knowledgesClasses } from '@/modules/db/knowledges'
 
 const knowledgeTypes = Object.values(knowledgesClasses.IKnowledgeTypes)
+const knowledgeLangs = Object.values(knowledgesClasses.IKnowledgeLangs)
 
 const props = defineProps<{ isCreating: boolean, knowledge: knowledgesClasses.IKnowledge }>()
 defineEmits([...useDialogPluginComponent.emits])

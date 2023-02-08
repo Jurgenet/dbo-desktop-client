@@ -4,36 +4,55 @@
 
   <div class="q-gutter-y-sm">
 
-    <div class="row no-wrap queryMarkers">
-      <MarkersUi.MarkersSelector
-        :markers-ids="notesStore.queryMarkers"
-        no-create
-        clearable
-        dense
-        @reselect="notesStore.queryMarkers = $event"
+    <div class="row full-width">
+      <q-toggle
+        v-model="notesStore.isSearchByMarkers"
+        :label="notesStore.isSearchByMarkers ? 'by Markers' : 'by Text'"
+        class="q-mr-md"
       />
+      <div class="col-4">
+        <MarkersUi.MarkersSelector
+          v-if="notesStore.isSearchByMarkers"
+          :markers-ids="notesStore.searchQuery"
+          class=""
+          no-create
+          clearable
+          dense
+          @reselect="notesStore.searchQuery = $event"
+        />
+        <InputsUi.RegularInput
+          v-else
+          v-model="notesStore.searchQuery"
+          label="search text"
+        />
+      </div>
       <q-btn
         label="search"
+        class="q-ml-md"
+        @click="notesStore.search"
+      />
+      <q-btn
+        label="clear search"
         class="q-ml-md"
         @click="notesStore.fetchAll"
       />
     </div>
 
-    <q-input
-      v-model="notesStore.filter"
-      class="col"
-      label="Title Filter"
-      outlined
-      clearable
-      dense
-    />
-
   </div>
 
-  <div class="q-pa-md flex flex-center">
+  <div class=" q-pt-lg row justify-between">
     <PaginationUi.Actions
       v-model="notesStore.currentPage"
       :max="notesStore.lastPageNumber"
+    />
+
+    <q-input
+      v-model="notesStore.filter"
+      class="col-4"
+      label="List Filter"
+      outlined
+      clearable
+      dense
     />
   </div>
 
@@ -68,6 +87,7 @@
 
 import { useNotesStore } from '@/stores/notes'
 
+import { InputsUi } from '@/modules/gui/inputs'
 import { PaginationUi } from '@/modules/core/pagination'
 import { MarkersUi } from '@/modules/db/markers'
 import { NotesUi, notesClasses } from '@/modules/db/notes'
