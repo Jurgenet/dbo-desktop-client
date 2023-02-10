@@ -17,7 +17,11 @@
 
         <MarkersUi.MarkersSelector :markers-ids="state.markers" @reselect="state.markers = $event" />
 
-        <NotesUi.NoteLinksEditor :links="state.links" @change="state.links = $event" />
+        <ExpansionsUi.ExpansionList>
+        <ExpansionsUi.RegularExpansion label="Links">
+          <NotesUi.NoteLinksEditor :links="state.links" @change="state.links = $event" />
+        </ExpansionsUi.RegularExpansion>
+      </ExpansionsUi.ExpansionList>
 
         <q-input
           v-model="state.text"
@@ -31,8 +35,14 @@
 
     </div>
 
-    <div v-else class="column q-gutter-y-md">
-      <NotesUi.NoteLinksView :links="note.dto.links" />
+    <div v-else class="column q-mt-md">
+
+      <ExpansionsUi.ExpansionList>
+        <ExpansionsUi.RegularExpansion label="Links" dense>
+          <NotesUi.NoteLinksView :links="note.dto.links" />
+        </ExpansionsUi.RegularExpansion>
+      </ExpansionsUi.ExpansionList>
+
       <vue3-markdown-it :source='note.dto.text' />
     </div>
 
@@ -60,6 +70,7 @@ import ActionControls from './action-controls/index.vue'
 import { useNotesStore } from '@/stores/notes'
 
 import { tabsDto } from '@/modules/gui/tabs'
+import { ExpansionsUi } from '@/modules/gui/expansions'
 import { MarkersUi } from '@/modules/db/markers'
 import { NotesUi, notesClasses, notesFabrics, notesApiService } from '@/modules/db/notes'
 
@@ -150,6 +161,7 @@ async function saveNote () {
     })
 
     syncNoteFromState()
+    noteStore.updateTab({ tab: props.tab, label: note.value.dto.title })
   } catch (error) {
     console.log(error)
   }

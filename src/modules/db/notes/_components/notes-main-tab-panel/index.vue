@@ -71,10 +71,10 @@ function onOpenNote (note: notesClasses.INote, isInBackground: boolean) {
   emits('open', note, isInBackground)
 }
 
-function onPinNote (note: notesClasses.INote) {
+async function onPinNote (note: notesClasses.INote) {
   note.dto.isPinned = !note.dto.isPinned
-  notesStore.updateOne(note)
-  notesStore.fetchAll()
+  await notesStore.updateOne(note, { noFetching: true })
+  notesStore.search()
 }
 
 async function onCreateNote () {

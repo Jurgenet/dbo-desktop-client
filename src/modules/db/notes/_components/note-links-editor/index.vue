@@ -3,7 +3,6 @@
 <div>
 
   <div v-if="!isEmpty">
-    <div>Links:</div>
     <div v-for="link, index in links" :key="`link-${index}`" class="q-mt-md row items-center q-gutter-x-sm">
       <div>{{ index + 1 }}. </div>
       <q-input v-model="link.label" class="col" outlined dense />
@@ -12,11 +11,13 @@
     </div>
   </div>
 
-  <div class="q-mt-md row items-center q-gutter-x-sm newLinkSection">
-    <div>+. </div>
-    <q-input v-model="labelRef" class="col" label="Label" outlined dense />
-    <q-input v-model="referenceRef" class="col" label="Reference" outlined dense />
-    <q-btn label="add link" @click="onAddLink" />
+  <div class="q-mt-md">
+    <div class="row items-center q-gutter-x-sm newLinkSection">
+      <div>+. </div>
+      <q-input v-model="labelRef" class="col" label="Label" debounce="300" outlined dense />
+      <q-input v-model="referenceRef" class="col" label="Reference" debounce="300" outlined dense />
+    </div>
+    <q-btn class="q-ma-md" label="commit link" @click="onCommitLink" />
   </div>
 
 </div>
@@ -44,8 +45,8 @@ const referenceRef = ref('')
 
 const isEmpty = computed(() => props.links.length === 0)
 
-function onAddLink () {
-  if (labelRef.value) {
+function onCommitLink () {
+  if (labelRef.value && referenceRef.value) {
     const links = [...props.links]
     links.push(notesFabrics.createLink(labelRef.value, referenceRef.value))
 

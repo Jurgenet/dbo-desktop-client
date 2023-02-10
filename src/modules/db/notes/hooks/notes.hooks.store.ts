@@ -32,8 +32,7 @@ export default function useNotesStore () {
 
   async function createOne () {
     return asyncState.runTask(async () => {
-      const { doc, message } = await apiService.createOne(notesFabrics.create().dto)
-      console.log(message)
+      const { doc /*, message */ } = await apiService.createOne(notesFabrics.create().dto)
 
       await fetchAll()
 
@@ -41,10 +40,13 @@ export default function useNotesStore () {
     })
   }
 
-  async function updateOne (note: notesClasses.INote) {
+  async function updateOne (note: notesClasses.INote, { noFetching = false }) {
     return asyncState.runTask(async () => {
       await apiService.updateOne(note.dto)
-      await fetchAll()
+
+      if (!noFetching) {
+        await fetchAll()
+      }
     })
   }
 
@@ -80,6 +82,13 @@ export default function useNotesStore () {
   })
 
   async function search () {
+    filter.value = ''
+
+    if (!searchQuery.value) {
+      fetchAll()
+      return
+    }
+
     return asyncState.runTask(async () => {
       let result = null
 

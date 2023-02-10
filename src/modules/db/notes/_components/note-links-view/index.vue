@@ -2,7 +2,6 @@
 
 <div>
   <div v-if="!isEmpty" class="column">
-    <div class="text-caption">Links:</div>
     <div class="q-mt-sm row items-center q-gutter-sm">
       <q-btn
         v-for="link, index in links" :key="`link-${index}`"

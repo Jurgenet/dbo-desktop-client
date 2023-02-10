@@ -13,7 +13,7 @@ export default function useTabsDynamic () {
 
   watch(activeTab, (tabName) => {
     // TODO: IS-009
-    const openedTab = _find(tabs.value, (tab: tabsDto.ITab) => tab.name === tabName)
+    const openedTab = _findTabByName(tabName)
 
     if (!openedTab) {
       activeTab.value = ROOT_TAB_NAME
@@ -30,6 +30,12 @@ export default function useTabsDynamic () {
     }
   }
 
+  function updateTab ({ tab, label }: { tab: tabsDto.ITab, label: string }) {
+    const updatedTab = _findTabByName(tab.name)
+
+    updatedTab.label = label
+  }
+
   function removeTab (tab: tabsDto.ITab) {
     // TODO: IS-001
     if (tab.isAlert) {
@@ -44,10 +50,15 @@ export default function useTabsDynamic () {
     tabs.value = listUtils.update(tabs.value, { name, isAlert }, 'name')
   }
 
+  function _findTabByName (tabName: string) {
+    return _find(tabs.value, (tab: tabsDto.ITab) => tab.name === tabName)
+  }
+
   return {
     activeTab,
     tabs,
     createTab,
+    updateTab,
     removeTab,
     setTabAlert,
   }
