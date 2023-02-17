@@ -1,7 +1,0 @@
-export { default as MainTabPanel } from './notes-main-tab-panel/index.vue'
-export { default as NotesList } from './notes-list/index.vue'
-export { default as NotePreview } from './note-preview/index.vue'
-export { default as NotePreviewFolding } from './note-preview-folding/index.vue'
-export { default as NoteCard } from './note-card/index.vue'
-export { default as NoteLinksEditor } from './note-links-editor/index.vue'
-export { default as NoteLinksView } from './note-links-view/index.vue'
