@@ -60,7 +60,7 @@ import { useNotesStore } from '@/stores/notes'
 
 import { TabsUi } from '@/modules/gui/tabs'
 import { PreloadersUi } from '@/modules/gui/preloaders'
-import { NotesUi, notesClasses } from '@/modules/db/notes'
+import { NotesUi, notesClasses } from '@/modules/db/subjects/notes'
 
 const notesStore = useNotesStore()
 

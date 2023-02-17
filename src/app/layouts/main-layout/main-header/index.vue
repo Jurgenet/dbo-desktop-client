@@ -32,7 +32,7 @@ import MenuButton from './menu-button.vue'
 import { appConsts } from 'src/app'
 import useAppStore from '@/stores/app'
 
-import { MarkersUi } from '@/modules/db/markers'
+import { MarkersUi } from '@/modules/db/subjects/markers'
 
 const { routes, toggleLeftDrawer } = useAppStore()
 

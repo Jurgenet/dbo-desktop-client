@@ -4,7 +4,7 @@ import { defineStore } from 'pinia'
 import useAppStore from '@/stores/app'
 
 import { useTabsDynamic } from '@/modules/gui/tabs'
-import { useNotesStore as useNotesStoreComposables } from '@/modules/db/notes'
+import { useNotesStore as useNotesStoreComposables } from '@/modules/db/subjects/notes'
 
 export const useNotesStore = defineStore('notes', () => {
   const appStore = useAppStore()

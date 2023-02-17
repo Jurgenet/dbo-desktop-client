@@ -48,7 +48,7 @@
 
       </q-tr>
 
-      <TablesUi.TableRowText v-show="props.expand" v-bind="props" />
+      <TablesUi.TableTextPlain v-show="props.expand" v-bind="props" />
 
     </template>
 
@@ -73,7 +73,7 @@ import {
   ordersFabrics,
   useOrdersDialogCreation,
   ordersTableUtils,
-} from '@/modules/db/orders'
+} from '@/modules/db/subjects/orders'
 
 const ordersStore = useOrdersStore()
 

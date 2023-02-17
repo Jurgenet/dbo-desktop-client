@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 import useAppStore from '@/stores/app'
 
-import { useKnowledgesStore as useKnowledgesStoreComposables } from '@/modules/db/knowledges'
+import { useKnowledgesStore as useKnowledgesStoreComposables } from '@/modules/db/subjects/knowledges'
 
 export const useKnowledgesStore = defineStore('knowledges', () => {
   const appStore = useAppStore()

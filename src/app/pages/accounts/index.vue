@@ -47,7 +47,7 @@
 
       </q-tr>
 
-      <TablesUi.TableRowText v-show="props.expand" v-bind="props" />
+      <TablesUi.TableTextPlain v-show="props.expand" v-bind="props" />
 
     </template>
 
@@ -72,7 +72,7 @@ import {
   accountsFabrics,
   useAccountsDialogCreation,
   accountsTableUtils,
-} from '@/modules/db/accounts'
+} from '@/modules/db/subjects/accounts'
 
 const accountsStore = useAccountsStore()
 

@@ -1,10 +1,7 @@
-export * as dbApiConsts from './db.api.consts'
-export * as dbApiFabrics from './db.api.fabrics'
+export * as dbConsts from './core/db.consts'
 
-export * as DbUi from './_components'
+export * as DbUi from './components'
 
-export { default as dbApiRequests } from './db.api.requests'
-
-export { default as useDbApiStore } from './db.api.hooks.store'
-
-export * as dbTableConsts from './db.table.consts'
+export { default as dbApiRequests } from './api/db.api.requests'
+export * as dbApiFabrics from './api/db.api.fabrics'
+export { default as useDbApiStore } from './api/db.api.hooks.store'

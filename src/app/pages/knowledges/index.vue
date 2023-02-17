@@ -48,7 +48,7 @@
 
     </q-tr>
 
-    <TablesUi.TableRowText v-show="props.expand" v-bind="props" />
+    <TablesUi.TableTextHtml v-show="props.expand" v-bind="props" />
 
     </template>
 
@@ -73,7 +73,7 @@ import {
   knowledgesFabrics,
   useKnowledgesDialogCreation,
   knowledgesTableUtils,
-} from '@/modules/db/knowledges'
+} from '@/modules/db/subjects/knowledges'
 
 const knowledgesStore = useKnowledgesStore()
 

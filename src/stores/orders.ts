@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 import useAppStore from '@/stores/app'
 
-import { useOrdersStore as useOrdersStoreComposables } from '@/modules/db/orders'
+import { useOrdersStore as useOrdersStoreComposables } from '@/modules/db/subjects/orders'
 
 export const useOrdersStore = defineStore('orders', () => {
   const appStore = useAppStore()
