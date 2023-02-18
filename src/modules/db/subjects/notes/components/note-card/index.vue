@@ -23,13 +23,7 @@
         </ExpansionsUi.RegularExpansion>
       </ExpansionsUi.ExpansionList>
 
-        <q-input
-          v-model="state.text"
-          type="textarea"
-          class="textarea"
-          label="text"
-          outlined
-        />
+        <EditorsUi.MarkdownEditor v-model="state.text" class="textarea" />
 
       </div>
 
@@ -47,7 +41,7 @@
         </ExpansionsUi.RegularExpansion>
       </ExpansionsUi.ExpansionList>
 
-      <vue3-markdown-it :source='note.dto.text' />
+      <EditorsUi.MarkdownEditor v-model="note.dto.text" preview-only />
     </div>
 
   </div>
@@ -76,6 +70,7 @@ import { useNotesStore } from '@/stores/notes'
 import { tabsDto } from '@/modules/gui/tabs'
 import { ExpansionsUi } from '@/modules/gui/expansions'
 import { MarkersUi } from '@/modules/db/subjects/markers'
+import { EditorsUi } from '@/modules/gui/editors'
 import { NotesUi, notesClasses, notesFabrics, notesApiService } from '@/modules/db/subjects/notes'
 
 const props = defineProps<{
@@ -175,8 +170,8 @@ async function saveNote () {
 
 <style lang="sass">
 
-.textarea .q-field__native
-  height: 48vh
+.textarea
+  height: 100%
 
 </style>
 

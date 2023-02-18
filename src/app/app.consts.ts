@@ -13,6 +13,7 @@ export const ROUTES = {
   NOTES: '/notes',
   ORDERS: '/orders',
   KNOWLEDGES: '/knowledges',
+  PICTURES: '/pictures',
 }
 
 export const MAIN_MENU_LINKS: drawerDto.TDrawerLeftLink[] = [
@@ -36,6 +37,11 @@ export const MAIN_MENU_LINKS: drawerDto.TDrawerLeftLink[] = [
     title: 'Knowledges',
     icon: 'school',
     link: ROUTES.KNOWLEDGES,
+  },
+  {
+    title: 'Pictures',
+    icon: 'image',
+    link: ROUTES.PICTURES,
   },
 ]
 

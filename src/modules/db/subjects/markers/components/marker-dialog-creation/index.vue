@@ -86,7 +86,6 @@ const markersStore = useMarkersStore()
 const groups = Object.values(markersClasses.IMarkerGroups)
 
 const markerRef = ref(props.marker as markersClasses.IMaker)
-console.log(props.marker)
 
 const { dialogRef, onDialogOK, onDialogHide } = useDialogPluginComponent()
 

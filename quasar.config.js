@@ -34,7 +34,6 @@ module.exports = configure(function (/* ctx */) {
     boot: [
       'i18n',
       'axios',
-      'vue3-markdown-it',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
@@ -70,6 +69,8 @@ module.exports = configure(function (/* ctx */) {
         serverName: env.SERVER_NAME,
         apiUrl: env.MAIN_API_URL,
         testApiUrl: env.TEST_API_URL,
+        fileUploadUrl: env.MAIN_FILE_UPLOAD_URL,
+        testFileUploadUrl: env.TEST_FILE_UPLOAD_URL,
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'

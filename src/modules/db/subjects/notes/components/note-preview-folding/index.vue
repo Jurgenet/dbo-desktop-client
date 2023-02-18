@@ -47,7 +47,7 @@
 
   <q-card v-if="isExpanded">
     <q-card-section>
-      <vue3-markdown-it :source='note.dto.text' />
+      <EditorsUi.MarkdownEditor :source="note.dto.text" />
     </q-card-section>
   </q-card>
 
@@ -59,6 +59,7 @@
 
 import { ref } from 'vue'
 
+import { EditorsUi } from '@/modules/gui/editors'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { notesClasses } from '@/modules/db/subjects/notes'
 

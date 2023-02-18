@@ -1,57 +1,32 @@
 <template>
 
 <q-page class="q-pa-md column">
-  <div class="full-width">
+  <TabsUi.TabList activeTab="main">
 
-    <q-tabs
-      v-model="activeTab"
-      class="shadow-2"
-      align="left"
-      indicator-color="primary"
-      dense
-    >
-      <q-tab name="main" label="main" />
-      <q-tab name="database" label="database" />
-    </q-tabs>
+  <template #tabs>
+    <q-tab name="main" label="main" />
+    <q-tab name="other" label="other" />
+  </template>
 
-    <q-separator />
+  <template #panels>
 
-    <q-tab-panels v-model="activeTab" animated keep-alive>
+    <q-tab-panel name="main">
+      <div>No settings yet</div>
+    </q-tab-panel>
 
-      <q-tab-panel name="main">
-        <div>No settings yet</div>
-      </q-tab-panel>
+    <q-tab-panel name="other">
+      <div>No settings yet</div>
+    </q-tab-panel>
 
-      <q-tab-panel name="database" class="column q-gutter-y-md">
+  </template>
 
-        <DbUi.DbToggle />
-
-        <div>
-          <q-btn label="do backup" @click="onDoBackup" />
-        </div>
-
-      </q-tab-panel>
-
-    </q-tab-panels>
-
-  </div>
-
+  </TabsUi.TabList>
 </q-page>
 
 </template>
 
 <script setup lang="ts">
 
-import { ref } from 'vue'
-
-import { DbUi, dbApiRequests } from '@/modules/db'
-
-const apiRequests = dbApiRequests()
-
-const activeTab = ref('main')
-
-function onDoBackup () {
-  apiRequests.backup()
-}
+import { TabsUi } from '@/modules/gui/tabs'
 
 </script>

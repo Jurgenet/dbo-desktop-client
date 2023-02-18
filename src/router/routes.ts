@@ -16,6 +16,7 @@ const routes: RouteRecordRaw[] = [
       { path: appConsts.ROUTES.NOTES, component: () => import('src/app/pages/notes/index.vue') },
       { path: appConsts.ROUTES.ORDERS, component: () => import('src/app/pages/orders/index.vue') },
       { path: appConsts.ROUTES.KNOWLEDGES, component: () => import('src/app/pages/knowledges/index.vue') },
+      { path: appConsts.ROUTES.PICTURES, component: () => import('src/app/pages/pictures/index.vue') },
     ],
   },
 

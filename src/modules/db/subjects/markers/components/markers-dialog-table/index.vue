@@ -1,6 +1,8 @@
 <template>
 
-<q-btn icon="push_pin" label="MARKERS" flat stretch @click="isVisibleRef = !isVisibleRef" />
+<div @click="onOpen">
+  <slot />
+</div>
 
 <teleport to="body">
   <q-dialog v-model="isVisibleRef" persistent full-width>
@@ -31,5 +33,9 @@ import { ref } from 'vue'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 
 const isVisibleRef = ref(false)
+
+function onOpen () {
+  isVisibleRef.value = !isVisibleRef.value
+}
 
 </script>

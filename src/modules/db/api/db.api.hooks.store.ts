@@ -11,6 +11,7 @@ export default function useApiStore () {
 
   const isProdServer = ref(true)
   const mainApiUrl = computed(() => isProdServer.value ? dbConsts.DB_API_URL : dbConsts.DB_TEST_API_URL)
+  const uploadFilesUrl = computed(() => isProdServer.value ? dbConsts.MAIN_FILE_UPLOAD_URL : dbConsts.TEST_FILE_UPLOAD_URL)
   const apiEndpoints = computed(() => new Proxy(
     dbConsts.ENDPOINTS,
     { get: (target, property) => `${mainApiUrl.value}/${target[property as keyof typeof target]}` },
@@ -30,6 +31,7 @@ export default function useApiStore () {
     serverName: computed(() => isProdServer.value ? 'live' : 'test'),
     serverColor: computed(() => isProdServer.value ? 'green' : 'blue'),
     mainApiUrl,
+    uploadFilesUrl,
     apiEndpoints,
   }
 }

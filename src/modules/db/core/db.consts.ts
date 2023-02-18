@@ -3,6 +3,9 @@ import { tableConsts } from '@/modules/gui/tables'
 export const DB_API_URL = process.env.apiUrl
 export const DB_TEST_API_URL = process.env.testApiUrl
 
+export const MAIN_FILE_UPLOAD_URL = process.env.fileUploadUrl
+export const TEST_FILE_UPLOAD_URL = process.env.testFileUploadUrl
+
 export const ENDPOINTS = {
   SYSTEM: 'system',
   MARKERS: 'marker',
