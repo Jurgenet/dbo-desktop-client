@@ -3,7 +3,7 @@ import { computed } from 'vue'
 import useAppStore from '@/stores/app'
 
 import { dbApiFabrics } from '@/modules/db'
-import { ordersDto } from '@/modules/db/subjects/orders'
+import { picturesDto } from '@/modules/db/subjects/pictures'
 
 // TODO: IS-010
 let service: any
@@ -11,8 +11,8 @@ let service: any
 function createService () {
   const appStore = useAppStore()
 
-  return dbApiFabrics.createDocRequests<ordersDto.IOrder>({
-    endpointRef: computed(() => appStore.apiEndpoints.value.ORDERS),
+  return dbApiFabrics.createDocRequests<picturesDto.IPictureDto>({
+    endpointRef: computed(() => appStore.apiEndpoints.value.PICTURES),
   })
 }
 

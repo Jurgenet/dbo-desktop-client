@@ -10,17 +10,18 @@ export default function useApiStore () {
   const loggerStore = useLoggerStore()
 
   const isProdServer = ref(true)
-  const mainApiUrl = computed(() => isProdServer.value ? dbConsts.DB_API_URL : dbConsts.DB_TEST_API_URL)
-  const uploadFilesUrl = computed(() => isProdServer.value ? dbConsts.MAIN_FILE_UPLOAD_URL : dbConsts.TEST_FILE_UPLOAD_URL)
+  const apiUrl = computed(() => isProdServer.value ? dbConsts.API_URL : dbConsts.DEV_API_URL)
+  const filesUploadUrl = computed(() => isProdServer.value ? dbConsts.FILES_UPLOAD_URL : dbConsts.DEV_FILES_UPLOAD_URL)
+  const filesStaticUrl = computed(() => isProdServer.value ? dbConsts.FILES_STATIC_URL : dbConsts.DEV_FILES_STATIC_URL)
   const apiEndpoints = computed(() => new Proxy(
     dbConsts.ENDPOINTS,
-    { get: (target, property) => `${mainApiUrl.value}/${target[property as keyof typeof target]}` },
+    { get: (target, property) => `${apiUrl.value}/${target[property as keyof typeof target]}` },
   ))
 
   watch(
     isProdServer,
     (isProd) => loggerStore.sendNotice(
-      `<b>${isProd ? 'production' : 'testing'}</b> API is used as the main one (${mainApiUrl.value}).`,
+      `<b>${isProd ? 'production' : 'develop'}</b> API is used as the main one (${apiUrl.value}).`,
       MODULE,
     ),
     { immediate: true },
@@ -28,10 +29,10 @@ export default function useApiStore () {
 
   return {
     isProdServer,
-    serverName: computed(() => isProdServer.value ? 'live' : 'test'),
-    serverColor: computed(() => isProdServer.value ? 'green' : 'blue'),
-    mainApiUrl,
-    uploadFilesUrl,
+    serverType: computed(() => isProdServer.value ? dbConsts.SERVER_TYPE.live : dbConsts.SERVER_TYPE.dev),
+    apiUrl,
+    filesUploadUrl,
+    filesStaticUrl,
     apiEndpoints,
   }
 }

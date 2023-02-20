@@ -1,7 +1,7 @@
 <template>
 
 <q-uploader
-  :url="appStore.uploadFilesUrl.value"
+  :url="appStore.filesUploadUrl.value"
   :no-thumbnails="noThumbnails"
   :dark="dark"
   :multiple="multiple"

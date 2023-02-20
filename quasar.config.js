@@ -34,6 +34,7 @@ module.exports = configure(function (/* ctx */) {
     boot: [
       'i18n',
       'axios',
+      'md-editor-v3',
     ],
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#css
@@ -64,13 +65,17 @@ module.exports = configure(function (/* ctx */) {
 
       env: {
         appName: env.APP_NAME,
-        version: '1.0.0',
+        version: '0.7.14',
         // servers
         serverName: env.SERVER_NAME,
-        apiUrl: env.MAIN_API_URL,
-        testApiUrl: env.TEST_API_URL,
-        fileUploadUrl: env.MAIN_FILE_UPLOAD_URL,
-        testFileUploadUrl: env.TEST_FILE_UPLOAD_URL,
+        // live
+        apiUrl: env.API_URL,
+        filesUploadUrl: env.FILES_UPLOAD_URL,
+        filesStaticUrl: env.FILES_STATIC_URL,
+        // dev
+        devApiUrl: env.DEV_API_URL,
+        devFilesUploadUrl: env.DEV_FILES_UPLOAD_URL,
+        devFileStaticUrl: env.DEV_FILES_STATIC_URL,
       },
 
       vueRouterMode: 'hash', // available values: 'hash', 'history'

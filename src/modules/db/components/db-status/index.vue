@@ -1,6 +1,6 @@
 <template>
 
-<q-badge :color="serverColor">{{ serverName }}</q-badge>
+<q-badge :color="serverType.color">{{ serverType.label }}</q-badge>
 
 </template>
 
@@ -8,6 +8,6 @@
 
 import useAppStore from '@/stores/app'
 
-const { serverName, serverColor } = useAppStore()
+const { serverType } = useAppStore()
 
 </script>

@@ -1,10 +1,23 @@
 import { tableConsts } from '@/modules/gui/tables'
 
-export const DB_API_URL = process.env.apiUrl
-export const DB_TEST_API_URL = process.env.testApiUrl
+export const API_URL = process.env.apiUrl
+export const FILES_UPLOAD_URL = process.env.filesUploadUrl
+export const FILES_STATIC_URL = process.env.filesStaticUrl
 
-export const MAIN_FILE_UPLOAD_URL = process.env.fileUploadUrl
-export const TEST_FILE_UPLOAD_URL = process.env.testFileUploadUrl
+export const DEV_API_URL = process.env.devApiUrl
+export const DEV_FILES_UPLOAD_URL = process.env.devFilesUploadUrl
+export const DEV_FILES_STATIC_URL = process.env.devFileStaticUrl
+
+export const SERVER_TYPE = {
+  live: {
+    label: 'live',
+    color: 'green',
+  },
+  dev: {
+    label: 'dev',
+    color: 'blue',
+  },
+}
 
 export const ENDPOINTS = {
   SYSTEM: 'system',
@@ -13,6 +26,7 @@ export const ENDPOINTS = {
   NOTES: 'note',
   ORDERS: 'order',
   KNOWLEDGES: 'knowledge',
+  PICTURES: 'pictures',
 }
 
 export const commonColumns = {

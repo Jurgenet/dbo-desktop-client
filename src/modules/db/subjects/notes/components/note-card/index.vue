@@ -23,7 +23,7 @@
         </ExpansionsUi.RegularExpansion>
       </ExpansionsUi.ExpansionList>
 
-        <EditorsUi.MarkdownEditor v-model="state.text" class="textarea" />
+        <EditorsUi.MarkdownEditor v-model="state.text" class="markdownEditor" />
 
       </div>
 
@@ -168,13 +168,6 @@ async function saveNote () {
 
 </script>
 
-<style lang="sass">
-
-.textarea
-  height: 100%
-
-</style>
-
 <style lang="sass" scoped>
 
 .noteCard
@@ -183,6 +176,8 @@ async function saveNote () {
 .contentWrapper
   border-top: 1px solid $grey-4
 
+.markdownEditor
+  height: 100%
 .actionControls
   position: fixed
   bottom: 137px

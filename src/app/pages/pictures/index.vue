@@ -11,11 +11,13 @@
     <template #panels>
 
       <q-tab-panel name="main">
-        <div>Picture List</div>
-      </q-tab-panel>
-
-      <q-tab-panel name="settings" class="column q-gutter-y-md">
-        <q-btn label="upload" @click="onUpload" />
+        <div class="row justify-start items-start q-gutter-md">
+          <PicturesUi.PictureCard
+            v-for="picture in picturesStore.pictures"
+            :key="picture._id"
+            :picture="picture"
+          />
+        </div>
       </q-tab-panel>
 
     </template>
@@ -27,11 +29,12 @@
 
 <script setup lang="ts">
 
-import { TabsUi } from '@/modules/gui/tabs'
-import { useFilesDialogUpload } from '@/modules/gui/files'
+import { usePicturesStore } from '@/stores/pictures'
 
-function onUpload () {
-  useFilesDialogUpload()
-}
+import { TabsUi } from '@/modules/gui/tabs'
+
+import { PicturesUi } from '@/modules/db/subjects/pictures'
+
+const picturesStore = usePicturesStore()
 
 </script>

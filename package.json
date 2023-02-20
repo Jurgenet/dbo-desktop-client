@@ -1,6 +1,6 @@
 {
   "name": "minerva",
-  "version": "0.7.13",
+  "version": "0.7.14",
   "description": "DBO Client",
   "productName": "Minerva",
   "author": "y.ivanchenko <jurgenet@gmail.com>",
@@ -15,15 +15,15 @@
     "docker-up": "docker-compose up --build"
   },
   "dependencies": {
-    "@quasar/extras": "^1.15.9",
+    "@quasar/extras": "^1.15.11",
     "@vavt/md-editor-extension": "^1.5.0",
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
     "md-editor-v3": "^2.8.1",
     "pinia": "^2.0.11",
-    "quasar": "^2.11.3",
-    "vue": "^3.0.0",
+    "quasar": "^2.11.6",
+    "vue": "3",
     "vue-i18n": "^9.0.0",
     "vue-router": "^4.0.0"
   },

@@ -2,7 +2,7 @@
 
 <q-toggle
   v-model="isProdServer"
-  :label="`On ${serverName} Server`"
+  :label="`On ${serverType.label} Server`"
   class="q-pa-sm"
 />
 
@@ -12,6 +12,6 @@
 
 import useAppStore from '@/stores/app'
 
-const { isProdServer, serverName } = useAppStore()
+const { isProdServer, serverType } = useAppStore()
 
 </script>
