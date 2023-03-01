@@ -1,13 +1,11 @@
 <template>
 
-<q-page>
+<PagesUi.Page no-padding>
 
   <BarsUi.Top title="Session log">
     <template #right>
       <div class="row q-gutter-x-sm">
-        <q-btn label="app busy" dense flat disable />
-        <q-separator vertical />
-        <q-btn label="send notices" class="gt-xs" dense flat @click="onSendTestMessages" />
+        <ButtonsUi.ButtonRegular label="send test notices" dense disable @click="onSendTestMessages" />
       </div>
     </template>
   </BarsUi.Top>
@@ -18,14 +16,24 @@
     </div>
   </div>
 
-</q-page>
+</PagesUi.Page>
 
 </template>
 
+<script lang="ts">
+
+export default {
+  name: 'DebugPage',
+  inheritAttrs: true,
+}
+
+</script>
+
 <script setup lang="ts">
 
+import { PagesUi } from '@/modules/gui/pages'
 import { BarsUi } from '@/modules/gui/bars'
-
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { LoggerUi } from '@/modules/core/logger'
 import { useLoggerStore } from '@/stores/logger'
 

@@ -4,20 +4,39 @@
 
   <div v-if="!isEmpty">
     <div v-for="link, index in links" :key="`link-${index}`" class="q-mt-md row items-center q-gutter-x-sm">
+
       <div>{{ index + 1 }}. </div>
+
       <q-input v-model="link.label" class="col" outlined dense />
+
       <q-input v-model="link.reference" class="col" outlined dense />
-      <q-btn class="removeButton" icon="delete" round size="sm" text-color="grey-6" @click="onRemoveLink(index)" />
+
+      <ButtonsUi.ButtonRegular
+        class="removeButton text-grey-6"
+        icon="delete"
+        round
+        size="sm"
+        text-color="grey-6"
+        @click="onRemoveLink(index)"
+      />
+
     </div>
   </div>
 
   <div class="q-mt-md">
+
     <div class="row items-center q-gutter-x-sm newLinkSection">
       <div>+. </div>
       <q-input v-model="labelRef" class="col" label="Label" debounce="300" outlined dense />
       <q-input v-model="referenceRef" class="col" label="Reference" debounce="300" outlined dense />
     </div>
-    <q-btn class="q-ma-md" label="commit link" @click="onCommitLink" />
+
+    <ButtonsUi.ButtonRegular
+      class="q-ma-md"
+      label="commit link"
+      @click="onCommitLink"
+    />
+
   </div>
 
 </div>
@@ -28,6 +47,7 @@
 
 import { ref, computed } from 'vue'
 
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { notesClasses, notesFabrics } from '@/modules/db/subjects/notes'
 
 const props = defineProps<{

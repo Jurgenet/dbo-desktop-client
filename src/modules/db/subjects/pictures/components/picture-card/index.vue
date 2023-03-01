@@ -2,7 +2,7 @@
 
 <q-card class="pictureCard" flat bordered>
 
-  <q-card-section horizontal>
+  <q-card-section class="q-pa-xs">
 
     <q-img :src="imageSrc" @click="onFullscreen">
       <q-icon class="absolute all-pointer-events" size="24px" name="info" color="grey" style="top: 8px; left: 8px">
@@ -12,16 +12,14 @@
       </q-icon>
     </q-img>
 
-    <q-card-actions vertical class="justify-start q-px-md">
-      <q-btn flat round color="accent" icon="edit" @click="onEdit" />
-      <q-btn flat round color="primary" icon="content_copy" @click="onCopyUrl" />
-    </q-card-actions>
-
-  </q-card-section>
-
-  <q-card-section>
-    <div class="text-subtitle2">{{ picture.dto.group }}</div>
+    <div class="row q-pa-xs text-subtitle2">{{ picture.dto.group }}</div>
+    <q-space />
     <!-- <div>{{ picture.dto.markers }}</div> -->
+    <q-card-actions class="justify-start q-pa-xs">
+      <q-space />
+      <ButtonsUi.ButtonRegular size="10px" icon="edit" round @click="onEdit" />
+      <ButtonsUi.ButtonCopyText :text="imageSrc" size="10px" icon="content_copy" round/>
+    </q-card-actions>
   </q-card-section>
 
 </q-card>
@@ -35,8 +33,8 @@ import { computed } from 'vue'
 import useAppStore from '@/stores/app'
 import { usePicturesStore } from '@/stores/pictures'
 
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { dialogsFabrics } from '@/modules/gui/dialogs'
-import { clipboardUtils } from '@/modules/core/clipboard'
 import { picturesClasses, usePicturesDialogEditor } from '@/modules/db/subjects/pictures'
 
 const appStore = useAppStore()
@@ -57,10 +55,6 @@ function onEdit () {
     .onOk(({ appliedPicture }: { appliedPicture: picturesClasses.IPicture }) => {
       picturesStore.updateOne(appliedPicture)
     })
-}
-
-function onCopyUrl () {
-  clipboardUtils.clip(imageSrc.value)
 }
 
 </script>

@@ -1,6 +1,6 @@
 <template>
 
-<q-page class="q-pa-md column">
+<PagesUi.Page>
 
   <q-table
     :loading="knowledgesStore.isBusy"
@@ -55,14 +55,25 @@
   </q-table>
 
   <PreloadersUi.Regular :is-visible="knowledgesStore.isBusy" />
-</q-page>
+
+</PagesUi.Page>
 
 </template>
+
+<script lang="ts">
+
+export default {
+  name: 'KnowledgesPage',
+  inheritAttrs: true,
+}
+
+</script>
 
 <script setup lang="ts">
 
 import { useKnowledgesStore } from '@/stores/knowledges'
 
+import { PagesUi } from '@/modules/gui/pages'
 import { TablesUi } from '@/modules/gui/tables'
 import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
 import { PreloadersUi } from '@/modules/gui/preloaders'

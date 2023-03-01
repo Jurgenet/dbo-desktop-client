@@ -18,13 +18,7 @@
     @filter="onFilterFn"
     @input-value="onTypingMarkerId"
   />
-  <q-btn
-    v-if="!noCreate"
-    class="q-ml-md"
-    label="create marker"
-    color="primary"
-    @click="onCreateMarker"
-  />
+  <ButtonsUi.ButtonCreate class="q-ml-md" @click="onCreateMarker" />
 </div>
 
 </template>
@@ -44,6 +38,7 @@ import { ref, watch } from 'vue'
 
 import { useMarkersStore } from '@/stores/markers'
 
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { selectsUtils } from '@/modules/gui/selects'
 import {
   markersClasses,

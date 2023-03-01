@@ -14,6 +14,7 @@ export const ROUTES = {
   ORDERS: '/orders',
   KNOWLEDGES: '/knowledges',
   PICTURES: '/pictures',
+  WOW: '/wow',
 }
 
 export const MAIN_MENU_LINKS: drawerDto.TDrawerLeftLink[] = [
@@ -42,6 +43,11 @@ export const MAIN_MENU_LINKS: drawerDto.TDrawerLeftLink[] = [
     title: 'Pictures',
     icon: 'image',
     link: ROUTES.PICTURES,
+  },
+  {
+    title: 'WoW',
+    icon: 'videogame_asset',
+    link: ROUTES.WOW,
   },
 ]
 

@@ -1,26 +1,41 @@
 <template>
 
 <div class="q-py-lg row q-gutter-x-sm actionControls">
-  <q-btn
-    icon="reply"
+
+  <ButtonsUi.ButtonRegular
     class="q-ml-sm text-white bg-primary"
-    flat
+    icon="reply"
     disable
     @click="emits('exit')"
   />
-  <q-btn
+
+  <ButtonsUi.ButtonRegular
     :label="isEditing ? 'save' : 'edit'"
     :class="{ 'bg-green-3': isEditing }"
     :outline="!isEditing"
     @click="emits('toggle-edit')"
   />
-  <q-btn v-if="isEditing" label="cancel" outline @click="emits('cancel-edit')" />
-  <q-btn v-if="!isEditing" label="refresh" outline @click="emits('refresh')" />
+
+  <ButtonsUi.ButtonRegular
+    v-if="isEditing"
+    label="cancel"
+    outline
+    @click="emits('cancel-edit')"
+  />
+
+  <ButtonsUi.ButtonRegular
+    v-if="!isEditing"
+    label="refresh"
+    outline
+    @click="emits('refresh')"
+  />
 </div>
 
 </template>
 
 <script setup lang="ts">
+
+import { ButtonsUi } from '@/modules/gui/buttons'
 
 defineProps<{
   isEditing: boolean

@@ -44,10 +44,10 @@
       </div>
     </q-card-section>
 
-    <q-card-actions align="right" class="text-primary">
-      <q-btn flat label="Cancel" @click="onDialogHide" />
-      <q-btn flat label="Apply Changes" @click="onApply" />
-    </q-card-actions>
+    <CardsUi.CardActionsCancelApply
+      @cancel="onDialogHide"
+      @apply="onApply"
+    />
 
   </q-card>
 </q-dialog>
@@ -59,6 +59,7 @@
 import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
+import { CardsUi } from '@/modules/gui/cards'
 import { InputsUi } from '@/modules/gui/inputs'
 
 import { accountsClasses } from '@/modules/db/subjects/accounts'

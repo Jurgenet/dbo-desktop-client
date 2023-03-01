@@ -12,7 +12,7 @@
 
   <template v-slot:top-left>
     <div class="row q-gutter-sm">
-      <q-btn label="Refresh" @click="markersStore.fetchAll" />
+      <ButtonsUi.ButtonRegular label="Refresh" @click="markersStore.fetchAll" />
       <ButtonsUi.TypedButton
         :type="ButtonsUi.TypedButtonType.Create"
         @click="onCreateOrEdit(null)"
@@ -33,7 +33,8 @@
   <template v-slot:body-cell-actions="props">
     <q-td :props="props">
       <div class="row justify-end no-wrap">
-        <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionStyle" tooltip="copy styles" @click="onCopyStyles(props.row.styles)" />
+        <ButtonsUi.ButtonRegular icon="style" size="12px" color="grey-8" round @click.stop="onCopyStyles(props.row.styles)"/>
+        <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionStyle" tooltip="copy styles" @click.stop="onCopyStyles(props.row.styles)" />
         <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionEdit" @click="onCreateOrEdit(props.row)" />
         <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionDelete" @click="onRemove(props.row._id)" />
       </div>

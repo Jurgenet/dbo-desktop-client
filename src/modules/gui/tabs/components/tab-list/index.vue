@@ -1,11 +1,12 @@
 <template>
 
 <div class="full-width">
+
   <q-tabs
     v-model="activeTabRef"
     class="shadow-2"
-    align="left"
     indicator-color="primary"
+    align="left"
     dense
   >
     <slot name="tabs" />
@@ -13,12 +14,26 @@
 
   <q-separator />
 
-  <q-tab-panels v-model="activeTabRef" animated keep-alive>
+  <q-tab-panels
+    v-model="activeTabRef"
+    keep-alive
+    animated
+  >
     <slot name="panels" />
   </q-tab-panels>
+
 </div>
 
 </template>
+
+<script lang="ts">
+
+export default {
+  name: 'TabList',
+  inheritAttrs: true,
+}
+
+</script>
 
 <script setup lang="ts">
 

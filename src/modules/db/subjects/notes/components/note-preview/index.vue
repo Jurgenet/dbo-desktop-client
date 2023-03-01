@@ -1,6 +1,7 @@
 <template>
 
 <div class="row justify-between no-wrap notePreview">
+
   <div class="flex items-center">
     <div class="text-h6 text-blue-9">{{ note.dto.title }}</div>
   </div>
@@ -14,36 +15,34 @@
     <div class="separator" />
 
     <div class="q-gutter-sm row items-center no-wrap cardActions">
-      <q-btn
+
+      <ButtonsUi.ButtonRegular
         :color="note.dto.isPinned ? 'yellow-8' : 'grey-4'"
         icon="push_pin"
         size="12px"
-        flat
         dense
         @click.stop="emits('pin', note)"
-      >
-        <q-tooltip>open in a new tab</q-tooltip>
-      </q-btn>
-      <q-btn
+      />
+
+      <ButtonsUi.ButtonRegular
+        tooltip="open in a new tab"
         icon="forward"
         size="12px"
         color="primary"
-        flat
         dense
         @click.stop="emits('open', note, false)"
-      >
-        <q-tooltip>open in a new tab</q-tooltip>
-      </q-btn>
-      <q-btn
+      />
+
+      <ButtonsUi.ButtonRegular
+        tooltip="open in new tab in background"
         icon="open_in_new"
         size="12px"
         color="primary"
         flat
         dense
         @click.stop="emits('open', note, true)"
-      >
-        <q-tooltip>open in new tab in background</q-tooltip>
-      </q-btn>
+      />
+
     </div>
 
   </div>
@@ -54,6 +53,7 @@
 
 <script setup lang="ts">
 
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { notesClasses } from '@/modules/db/subjects/notes'
 

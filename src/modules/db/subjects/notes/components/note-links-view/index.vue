@@ -3,7 +3,7 @@
 <div>
   <div v-if="!isEmpty" class="column">
     <div class="q-mt-sm row items-center q-gutter-sm">
-      <q-btn
+      <ButtonsUi.ButtonRegular
         v-for="link, index in links" :key="`link-${index}`"
         :label="link.label"
         class="q-ml-sm q-mt-sm"
@@ -20,6 +20,7 @@
 
 import { computed } from 'vue'
 
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import { notesDto } from '@/modules/db/subjects/notes'
 

@@ -1,6 +1,6 @@
 <template>
 
-<q-page class="q-pa-md">
+<PagesUi.Page>
   <q-table
     :loading="accountsStore.isBusy"
     :rows="accountsStore.accounts"
@@ -54,14 +54,24 @@
   </q-table>
 
   <PreloadersUi.Regular :is-visible="accountsStore.isBusy" />
-</q-page>
+</PagesUi.Page>
 
 </template>
+
+<script lang="ts">
+
+export default {
+  name: 'AccountsPage',
+  inheritAttrs: true,
+}
+
+</script>
 
 <script setup lang="ts">
 
 import { useAccountsStore } from '@/stores/accounts'
 
+import { PagesUi } from '@/modules/gui/pages'
 import { TablesUi } from '@/modules/gui/tables'
 import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
 import { PreloadersUi } from '@/modules/gui/preloaders'

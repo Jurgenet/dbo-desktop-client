@@ -1,4 +1,4 @@
-import { IKnowledgeTypes, IKnowledgeLangs } from "./knowledges.classes"
+import { IKnowledgeTypes, IKnowledgeLangs } from './knowledges.classes'
 
 export interface IKnowledgeDto {
   _id?: string

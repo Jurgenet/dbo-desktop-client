@@ -1,6 +1,6 @@
 <template>
 
-<q-page class="q-pa-md column">
+<PagesUi.Page>
   <TabsUi.TabList activeTab="main">
 
   <template #tabs>
@@ -21,12 +21,22 @@
   </template>
 
   </TabsUi.TabList>
-</q-page>
+</PagesUi.Page>
 
 </template>
 
+<script lang="ts">
+
+export default {
+  name: 'SettingsPage',
+  inheritAttrs: true,
+}
+
+</script>
+
 <script setup lang="ts">
 
+import { PagesUi } from '@/modules/gui/pages'
 import { TabsUi } from '@/modules/gui/tabs'
 
 </script>

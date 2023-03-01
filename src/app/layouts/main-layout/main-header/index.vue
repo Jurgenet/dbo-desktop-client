@@ -3,7 +3,7 @@
 <q-header class="bg-primary text-white" height-hint="98" elevated>
   <q-toolbar>
 
-    <MenuButton @click="toggleLeftDrawer" />
+    <ButtonsUi.ButtonRegular icon="menu" round @click="toggleLeftDrawer" />
 
     <SeparatorsUi.RegularSeparator dark />
 
@@ -15,11 +15,11 @@
 
     <SeparatorsUi.RegularSeparator dark />
 
-    <q-btn label="Settings" :to="routes.SETTINGS" flat stretch />
+    <ButtonsUi.ButtonRoute :to="routes.SETTINGS" label="Settings" />
 
     <SeparatorsUi.RegularSeparator dark />
 
-    <q-btn label="DUBUG" :to="routes.DUBUG" flat stretch />
+    <ButtonsUi.ButtonRoute :to="routes.DUBUG" label="DUBUG" />
 
     <SeparatorsUi.RegularSeparator dark />
 
@@ -34,11 +34,9 @@
 
 <script setup lang="ts">
 
-import MenuButton from './menu-button/index.vue'
-
 import { appConsts } from 'src/app'
 import useAppStore from '@/stores/app'
-
+import { ButtonsUi } from '@/modules/gui/buttons'
 import { SeparatorsUi } from '@/modules/gui/separators'
 
 const { routes, toggleLeftDrawer } = useAppStore()
