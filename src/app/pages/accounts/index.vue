@@ -43,7 +43,7 @@
             @remove="onRemove"
             @copy-reference="onCopyLink"
           />
-      </q-td>
+        </q-td>
 
       </q-tr>
 
@@ -69,6 +69,8 @@ export default {
 
 <script setup lang="ts">
 
+import { toRaw } from 'vue'
+
 import { useAccountsStore } from '@/stores/accounts'
 
 import { PagesUi } from '@/modules/gui/pages'
@@ -89,7 +91,7 @@ const accountsStore = useAccountsStore()
 function onCreateOrEdit (accountRow: accountsClasses.IAccount | null) {
   const isCreating = accountRow === null
   const account = accountRow
-    ? accountsFabrics.clone(accountRow)
+    ? accountsFabrics.clone(toRaw(accountRow))
     : accountsFabrics.create({ title: accountsStore.filter })
 
   useAccountsDialogCreation({ isCreating, account })

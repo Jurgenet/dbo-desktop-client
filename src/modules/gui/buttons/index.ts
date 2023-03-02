@@ -1,1 +1,1 @@
-export * as ButtonsUi from './components'
+export * as ButtonUi from './components'

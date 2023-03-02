@@ -1,12 +1,12 @@
 <template>
 
-<ButtonsUi.ButtonRegular v-close-popup label="ok" />
+<ButtonUi.Button v-close-popup label="ok" />
 
 </template>
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 </script>
 

@@ -11,7 +11,7 @@
 
       <q-input v-model="link.reference" class="col" outlined dense />
 
-      <ButtonsUi.ButtonRegular
+      <ButtonUi.Button
         class="removeButton text-grey-6"
         icon="delete"
         round
@@ -31,7 +31,7 @@
       <q-input v-model="referenceRef" class="col" label="Reference" debounce="300" outlined dense />
     </div>
 
-    <ButtonsUi.ButtonRegular
+    <ButtonUi.Button
       class="q-ma-md"
       label="commit link"
       @click="onCommitLink"
@@ -47,7 +47,7 @@
 
 import { ref, computed } from 'vue'
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { notesClasses, notesFabrics } from '@/modules/db/subjects/notes'
 
 const props = defineProps<{

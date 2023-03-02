@@ -12,11 +12,8 @@
 
   <template v-slot:top-left>
     <div class="row q-gutter-sm">
-      <ButtonsUi.ButtonRegular label="Refresh" @click="markersStore.fetchAll" />
-      <ButtonsUi.TypedButton
-        :type="ButtonsUi.TypedButtonType.Create"
-        @click="onCreateOrEdit(null)"
-      />
+      <ButtonUi.Button label="Refresh" @click="markersStore.fetchAll" />
+      <ButtonUi.ButtonCreate @click="onCreateOrEdit(null)" />
     </div>
   </template>
 
@@ -33,10 +30,9 @@
   <template v-slot:body-cell-actions="props">
     <q-td :props="props">
       <div class="row justify-end no-wrap">
-        <ButtonsUi.ButtonRegular icon="style" size="12px" color="grey-8" round @click.stop="onCopyStyles(props.row.styles)"/>
-        <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionStyle" tooltip="copy styles" @click.stop="onCopyStyles(props.row.styles)" />
-        <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionEdit" @click="onCreateOrEdit(props.row)" />
-        <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.TableCellActionDelete" @click="onRemove(props.row._id)" />
+        <ButtonUi.ButtonMiniStyle tooltip="copy styles" @click.stop="onCopyStyles(props.row.styles)" />
+        <ButtonUi.ButtonMiniEdit @click="onCreateOrEdit(props.row)" />
+        <ButtonUi.ButtonMiniRemove @click="onRemove(props.row._id)" />
       </div>
     </q-td>
   </template>
@@ -49,12 +45,14 @@
 
 <script setup lang="ts">
 
+import { toRaw } from 'vue'
+
 import { useMarkersStore } from '@/stores/markers'
 
 import { TablesUi } from '@/modules/gui/tables'
 import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
 import { PreloadersUi } from '@/modules/gui/preloaders'
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import {
   markersConsts,
   markersClasses,
@@ -69,7 +67,7 @@ const markersStore = useMarkersStore()
 function onCreateOrEdit (markerRow: markersClasses.IMarker | null) {
   const isCreating = markerRow === null
   const marker = markerRow
-    ? markersFabrics.clone(markerRow)
+    ? markersFabrics.clone(toRaw(markerRow))
     : markersFabrics.create({ _id: markersStore.filter })
 
   useMarkersDialogCreation({ isCreating, marker })

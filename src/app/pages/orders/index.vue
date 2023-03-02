@@ -71,6 +71,8 @@ export default {
 
 <script setup lang="ts">
 
+import { toRaw } from 'vue'
+
 import { useOrdersStore } from '@/stores/orders'
 
 import { PagesUi } from '@/modules/gui/pages'
@@ -91,7 +93,7 @@ const ordersStore = useOrdersStore()
 function onCreateOrEdit (orderRow: ordersClasses.IOrder | null) {
   const isCreating = orderRow === null
   const order = orderRow
-    ? ordersFabrics.clone(orderRow)
+    ? ordersFabrics.clone(toRaw(orderRow))
     : ordersFabrics.create({ title: ordersStore.filter })
 
   useOrdersDialogCreation({ isCreating, order })

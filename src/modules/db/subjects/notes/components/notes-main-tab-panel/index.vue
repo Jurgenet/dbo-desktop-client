@@ -32,7 +32,7 @@
           <q-expansion-item icon="add_circle" label="Creating" header-class="text-blue">
             <q-card>
               <q-card-section class="q-gutter-sm">
-                <ButtonsUi.TypedButton :type="ButtonsUi.TypedButtonType.Create" @click="onCreateNote" />
+                <ButtonUi.ButtonCreate @click="onCreateNote" />
                 <q-toggle v-model="isOpenAfterCreating" label="open after creating" />
               </q-card-section>
             </q-card>
@@ -53,7 +53,7 @@ import { ref } from 'vue'
 
 import { useNotesStore } from '@/stores/notes'
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { NotesUi, notesClasses } from '@/modules/db/subjects/notes'
 
 // eslint-disable-next-line func-call-spacing

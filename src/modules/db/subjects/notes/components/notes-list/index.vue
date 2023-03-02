@@ -3,13 +3,14 @@
 <div class="notesList">
 
   <div class="q-gutter-y-sm">
-
     <div class="row full-width">
+
       <q-toggle
         v-model="notesStore.isSearchByMarkers"
         :label="notesStore.isSearchByMarkers ? 'by Markers' : 'by Text'"
         class="q-mr-md"
       />
+
       <div class="col-4">
         <MarkersUi.MarkersSelector
           v-if="notesStore.isSearchByMarkers"
@@ -25,18 +26,12 @@
           label="search text"
         />
       </div>
-      <q-btn
-        label="search"
-        class="q-ml-md"
-        @click="notesStore.search"
-      />
-      <q-btn
-        label="clear search"
-        class="q-ml-md"
-        @click="notesStore.clearSearch"
-      />
-    </div>
 
+      <ButtonUi.Button label="search" class="q-ml-md" @click="notesStore.search" />
+
+      <ButtonUi.Button label="clear search" class="q-ml-md" @click="notesStore.clearSearch" />
+
+    </div>
   </div>
 
   <div class=" q-pt-lg row justify-between">
@@ -86,6 +81,7 @@
 
 import { useNotesStore } from '@/stores/notes'
 
+import { ButtonUi } from '@/modules/gui/buttons'
 import { InputsUi } from '@/modules/gui/inputs'
 import { PaginationUi } from '@/modules/core/pagination'
 import { MarkersUi } from '@/modules/db/subjects/markers'

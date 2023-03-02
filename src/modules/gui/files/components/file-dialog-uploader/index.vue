@@ -15,7 +15,7 @@
     </q-card-section>
 
     <q-card-actions align="right" class="text-primary">
-      <q-btn label="Close" flat text-color="red-5" @click="onDialogHide" />
+      <ButtonUi.Button label="close" @click="onDialogHide" />
     </q-card-actions>
 
   </q-card>
@@ -29,6 +29,7 @@ import { useDialogPluginComponent } from 'quasar'
 
 import FileRules from './file-rules/index.vue'
 
+import { ButtonUi } from '@/modules/gui/buttons'
 import { FilesUi } from '@/modules/gui/files'
 
 defineEmits([...useDialogPluginComponent.emits])

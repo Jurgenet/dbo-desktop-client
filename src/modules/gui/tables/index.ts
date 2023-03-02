@@ -1,3 +1,3 @@
-export * as tableConsts from './table.consts'
+export * as tableConsts from './core/table.consts'
 
 export * as TablesUi from './components'

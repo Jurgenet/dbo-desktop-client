@@ -5,7 +5,7 @@
   <BarsUi.Top title="Session log">
     <template #right>
       <div class="row q-gutter-x-sm">
-        <ButtonsUi.ButtonRegular label="send test notices" dense disable @click="onSendTestMessages" />
+        <ButtonUi.Button label="send test notices" dense disable @click="onSendTestMessages" />
       </div>
     </template>
   </BarsUi.Top>
@@ -33,7 +33,7 @@ export default {
 
 import { PagesUi } from '@/modules/gui/pages'
 import { BarsUi } from '@/modules/gui/bars'
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { LoggerUi } from '@/modules/core/logger'
 import { useLoggerStore } from '@/stores/logger'
 

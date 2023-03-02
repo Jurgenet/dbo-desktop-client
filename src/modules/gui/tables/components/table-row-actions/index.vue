@@ -2,47 +2,35 @@
 
 <!-- actions -->
 <div v-if="col.name === 'actions'" class="row justify-end no-wrap">
-  <ButtonsUi.TypedButton
-    :type="ButtonsUi.TypedButtonType.TableCellActionEdit"
-    @click="emits('edit', row)"
-  />
-  <ButtonsUi.TypedButton
-    :type="ButtonsUi.TypedButtonType.TableCellActionDelete"
-    @click="emits('remove', row._id)"
-  />
+  <ButtonUi.ButtonMiniEdit @click="emits('edit', row)" />
+  <ButtonUi.ButtonMiniRemove @click="emits('remove', row._id)" />
 </div>
 
 <!-- link -->
 <div v-else-if="col.name === 'link'" class="row no-wrap">
-  <ButtonsUi.TypedButton
+  <ButtonUi.ButtonMiniLink
     v-show="row.dto.link"
-    :type="ButtonsUi.TypedButtonType.TableCellActionReference"
+    :tooltip="row.dto.link"
     @click="emits('copy-reference', row.dto.link)"
-  >
-    <q-tooltip class="text-caption">{{ row.dto.link }}</q-tooltip>
-  </ButtonsUi.TypedButton>
+  />
 </div>
 
 <!-- location -->
 <div v-else-if="col.name === 'location'" class="row no-wrap">
-  <ButtonsUi.TypedButton
+  <ButtonUi.ButtonMiniLink
     v-show="row.dto.location"
-    :type="ButtonsUi.TypedButtonType.TableCellActionReference"
+    :tooltip="row.dto.location"
     @click="emits('copy-reference', row.dto.location)"
-  >
-    <q-tooltip class="text-caption">{{ row.dto.location }}</q-tooltip>
-  </ButtonsUi.TypedButton>
+  />
 </div>
 
 <!-- pasword -->
 <div v-else-if="col.name === 'password'" class="row no-wrap">
-  <ButtonsUi.TypedButton
+  <ButtonUi.ButtonMiniMask
     v-show="row.dto.password"
-    :type="ButtonsUi.TypedButtonType.TableCellActionPassword"
+    :tooltip="row.dto.password"
     @click="emits('copy-reference', row.dto.password)"
-  >
-    <q-tooltip class="text-caption">{{ row.dto.password }}</q-tooltip>
-  </ButtonsUi.TypedButton>
+  />
 </div>
 
 <!-- rating -->
@@ -64,7 +52,7 @@
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { RatingsUi } from '@/modules/gui/ratings'
 
 defineProps<{

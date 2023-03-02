@@ -6,7 +6,9 @@ import useAppStore from '@/stores/app'
 import { useTabsDynamic } from '@/modules/gui/tabs'
 import { useNotesStore as useNotesStoreComposables } from '@/modules/db/subjects/notes'
 
-export const useNotesStore = defineStore('notes', () => {
+const STORE_NAME = 'notes'
+
+export const useNotesStore = defineStore(STORE_NAME, () => {
   const appStore = useAppStore()
   const notesStore = useNotesStoreComposables()
 

@@ -15,5 +15,5 @@ export function create (dto: Partial<IAccountDto>): IAccount {
 }
 
 export function clone (account: IAccount): IAccount {
-  return new Account({ ...account.dto })
+  return new Account(structuredClone(account.dto))
 }

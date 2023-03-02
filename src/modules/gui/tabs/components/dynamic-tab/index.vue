@@ -5,13 +5,9 @@
   :label="label"
   :alert="isAlert && 'orange'"
 >
-  <q-btn
+  <ButtonUi.ButtonMiniClose
     :disabled="isAlert"
     class="q-mx-sm"
-    icon="clear"
-    color="grey-6"
-    size="8px"
-    dense
     @click="emits('remove', props)"
   />
 </q-tab>
@@ -20,7 +16,8 @@
 
 <script setup lang="ts">
 
-import { tabsDto } from '@/gui/tabs'
+import { tabsDto } from '@/modules/gui/tabs'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 // TODO: IS-003
 const props = defineProps<{

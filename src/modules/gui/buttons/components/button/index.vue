@@ -45,6 +45,15 @@
 
 </template>
 
+<script lang="ts">
+
+export default {
+  name: 'TheButton',
+  inheritAttrs: true,
+}
+
+</script>
+
 <script setup lang="ts">
 
 import { computed } from 'vue'
@@ -91,19 +100,10 @@ const props = withDefaults(defineProps<{
   //
   tooltip?: string
 }>(), {
-  flat: true,
+  flat: false,
   loading: false,
 })
 
 const flatRef = computed(() => props.outline ? false : props.flat)
-
-</script>
-
-<script lang="ts">
-
-export default {
-  name: 'ButtonRegular',
-  inheritAttrs: true,
-}
 
 </script>

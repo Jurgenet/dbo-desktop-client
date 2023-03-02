@@ -22,22 +22,8 @@
 
     <q-item-section side>
       <div class="q-ml-sm q-gutter-sm row items-center cardActions">
-        <q-btn
-          icon="forward"
-          size="12px"
-          color="primary"
-          flat
-          dense
-          @click.stop="emits('open', note, false)"
-        />
-        <q-btn
-          icon="open_in_new"
-          size="12px"
-          color="primary"
-          flat
-          dense
-          @click.stop="emits('open', note, true)"
-        />
+        <ButtonUi.ButtonMiniForward @click.stop="emits('open', note, false)" />
+        <ButtonUi.ButtonMiniOpenTab @click.stop="emits('open', note, true)" />
       </div>
     </q-item-section>
 
@@ -59,6 +45,7 @@
 
 import { ref } from 'vue'
 
+import { ButtonUi } from '@/modules/gui/buttons'
 import { EditorsUi } from '@/modules/gui/editors'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { notesClasses } from '@/modules/db/subjects/notes'

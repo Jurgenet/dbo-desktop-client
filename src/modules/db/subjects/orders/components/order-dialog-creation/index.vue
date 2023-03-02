@@ -72,8 +72,8 @@
     </q-card-section>
 
     <q-card-actions align="right" class="text-primary">
-      <q-btn flat label="Cancel" @click="onDialogHide" />
-      <q-btn flat label="Apply Changes" @click="onApply" />
+      <ButtonUi.ButtonCancel @click="onDialogHide" />
+      <ButtonUi.ButtonOk @click="onApply" />
     </q-card-actions>
 
   </q-card>
@@ -86,6 +86,7 @@
 import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
+import { ButtonUi } from '@/modules/gui/buttons'
 import { InputsUi } from '@/modules/gui/inputs'
 
 import { ordersClasses } from '@/modules/db/subjects/orders'

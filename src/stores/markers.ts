@@ -5,7 +5,9 @@ import useAppStore from '@/stores/app'
 
 import { useMarkersStore as useMarkersStoreComposables } from '@/modules/db/subjects/markers'
 
-export const useMarkersStore = defineStore('markers', () => {
+const STORE_NAME = 'markers'
+
+export const useMarkersStore = defineStore(STORE_NAME, () => {
   const appStore = useAppStore()
   const markersStore = useMarkersStoreComposables()
 

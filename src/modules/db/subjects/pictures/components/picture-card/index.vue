@@ -17,8 +17,8 @@
     <!-- <div>{{ picture.dto.markers }}</div> -->
     <q-card-actions class="justify-start q-pa-xs">
       <q-space />
-      <ButtonsUi.ButtonRegular size="10px" icon="edit" round @click="onEdit" />
-      <ButtonsUi.ButtonCopyText :text="imageSrc" size="10px" icon="content_copy" round/>
+      <ButtonUi.Button size="10px" icon="edit" round @click="onEdit" />
+      <ButtonUi.ButtonCopyText :text="imageSrc" size="10px" icon="content_copy" round/>
     </q-card-actions>
   </q-card-section>
 
@@ -33,7 +33,7 @@ import { computed } from 'vue'
 import useAppStore from '@/stores/app'
 import { usePicturesStore } from '@/stores/pictures'
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { dialogsFabrics } from '@/modules/gui/dialogs'
 import { picturesClasses, usePicturesDialogEditor } from '@/modules/db/subjects/pictures'
 

@@ -14,5 +14,5 @@ export function create (dto: Partial<IMarkerDto>): IMarker {
 }
 
 export function clone (marker: IMarker): IMarker {
-  return new Marker({ ...marker.dto })
+  return new Marker(structuredClone(marker.dto))
 }

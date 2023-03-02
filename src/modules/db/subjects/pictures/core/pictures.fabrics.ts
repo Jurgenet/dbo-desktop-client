@@ -14,5 +14,5 @@ export function create (dto: Partial<IPictureDto>): IPicture {
 }
 
 export function clone (picture: IPicture): IPicture {
-  return new Picture({ ...picture.dto })
+  return new Picture(structuredClone(picture.dto))
 }

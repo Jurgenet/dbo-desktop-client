@@ -5,7 +5,9 @@ import useAppStore from '@/stores/app'
 
 import { useAccountsStore as useAccountsStoreComposables } from '@/modules/db/subjects/accounts'
 
-export const useAccountsStore = defineStore('accounts', () => {
+const STORE_NAME = 'accounts'
+
+export const useAccountsStore = defineStore(STORE_NAME, () => {
   const appStore = useAppStore()
   const accountsStore = useAccountsStoreComposables()
 

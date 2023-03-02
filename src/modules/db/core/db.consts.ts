@@ -27,25 +27,5 @@ export const ENDPOINTS = {
   ORDERS: 'order',
   KNOWLEDGES: 'knowledge',
   PICTURES: 'pictures',
-}
-
-export const commonColumns = {
-  type: {
-    ...tableConsts.defaultColumns,
-    name: 'type',
-    label: 'Type',
-    field: 'type',
-  },
-  title: {
-    ...tableConsts.defaultColumns,
-    name: 'title',
-    label: 'Title',
-    field: 'title',
-  },
-  markers: {
-    ...tableConsts.defaultColumns,
-    name: 'markers',
-    label: 'Markers',
-    field: ({ markers }: { markers: string[] }) => markers.join(' '),
-  },
+  WOW: 'wow',
 }

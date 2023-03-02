@@ -12,7 +12,7 @@
 
         <SeparatorsUi.RegularSeparator />
 
-        <ButtonsUi.ButtonRegular :to="routes.SHOWROOM" label="Showroom" stretch />
+        <ButtonUi.Button :to="routes.SHOWROOM" label="Showroom" stretch flat />
 
       </q-toolbar>
 
@@ -38,7 +38,7 @@ import TimeClock from './time-clock.vue'
 
 import useAppStore from '@/stores/app'
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { SeparatorsUi } from '@/modules/gui/separators'
 import { DbUi } from '@/modules/db'
 

@@ -16,30 +16,18 @@
 
     <div class="q-gutter-sm row items-center no-wrap cardActions">
 
-      <ButtonsUi.ButtonRegular
-        :color="note.dto.isPinned ? 'yellow-8' : 'grey-4'"
-        icon="push_pin"
-        size="12px"
-        dense
+      <ButtonUi.ButtonMiniPin
+        :is-pinned="note.dto.isPinned"
         @click.stop="emits('pin', note)"
       />
 
-      <ButtonsUi.ButtonRegular
+      <ButtonUi.ButtonMiniForward
         tooltip="open in a new tab"
-        icon="forward"
-        size="12px"
-        color="primary"
-        dense
         @click.stop="emits('open', note, false)"
       />
 
-      <ButtonsUi.ButtonRegular
+      <ButtonUi.ButtonMiniOpenTab
         tooltip="open in new tab in background"
-        icon="open_in_new"
-        size="12px"
-        color="primary"
-        flat
-        dense
         @click.stop="emits('open', note, true)"
       />
 
@@ -53,7 +41,7 @@
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { notesClasses } from '@/modules/db/subjects/notes'
 

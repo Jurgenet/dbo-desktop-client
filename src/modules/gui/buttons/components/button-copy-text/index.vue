@@ -1,14 +1,14 @@
 <template>
 
-<ButtonsUi.ButtonRegular @click="onAction">
+<ButtonUi.Button @click="onAction">
   <slot />
-</ButtonsUi.ButtonRegular>
+</ButtonUi.Button>
 
 </template>
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 import { clipboardUtils } from '@/modules/core/clipboard'
 

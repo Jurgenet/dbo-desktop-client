@@ -2,28 +2,28 @@
 
 <div class="q-py-lg row q-gutter-x-sm actionControls">
 
-  <ButtonsUi.ButtonRegular
+  <ButtonUi.Button
     class="q-ml-sm text-white bg-primary"
     icon="reply"
     disable
     @click="emits('exit')"
   />
 
-  <ButtonsUi.ButtonRegular
+  <ButtonUi.Button
     :label="isEditing ? 'save' : 'edit'"
     :class="{ 'bg-green-3': isEditing }"
     :outline="!isEditing"
     @click="emits('toggle-edit')"
   />
 
-  <ButtonsUi.ButtonRegular
+  <ButtonUi.Button
     v-if="isEditing"
     label="cancel"
     outline
     @click="emits('cancel-edit')"
   />
 
-  <ButtonsUi.ButtonRegular
+  <ButtonUi.Button
     v-if="!isEditing"
     label="refresh"
     outline
@@ -35,7 +35,7 @@
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 defineProps<{
   isEditing: boolean

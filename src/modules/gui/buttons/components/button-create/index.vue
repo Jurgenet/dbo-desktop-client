@@ -1,12 +1,12 @@
 <template>
 
-<ButtonsUi.ButtonRegular
+<ButtonUi.Button
   class="bg-primary"
   label="create"
   text-color="white"
 >
   <slot />
-</ButtonsUi.ButtonRegular>
+</ButtonUi.Button>
 
 </template>
 
@@ -21,6 +21,6 @@ export default {
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 </script>

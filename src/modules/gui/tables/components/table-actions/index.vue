@@ -1,23 +1,15 @@
 <template>
 
 <div class="row q-gutter-sm">
-  <ButtonsUi.TypedButton
-    :type="ButtonsUi.TypedButtonType.Regular"
-    label="Refresh"
-    @click="emits('refresh')"
-  />
-  <ButtonsUi.TypedButton
-    :type="ButtonsUi.TypedButtonType.Create"
-    @click="emits('create')"
-  />
-
+  <ButtonUi.Button label="refresh" @click="emits('refresh')" />
+  <ButtonUi.ButtonCreate @click="emits('create')" />
 </div>
 
 </template>
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 // eslint-disable-next-line func-call-spacing
 const emits = defineEmits<{

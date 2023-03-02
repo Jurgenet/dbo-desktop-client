@@ -5,7 +5,9 @@ import useAppStore from '@/stores/app'
 
 import { usePicturesStore as usePicturesStoreComposables } from '@/modules/db/subjects/pictures'
 
-export const usePicturesStore = defineStore('pictures', () => {
+const STORE_NAME = 'pictures'
+
+export const usePicturesStore = defineStore(STORE_NAME, () => {
   const appStore = useAppStore()
   const picturesStore = usePicturesStoreComposables()
 

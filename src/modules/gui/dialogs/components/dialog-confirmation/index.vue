@@ -9,8 +9,8 @@
     </q-card-section>
 
     <q-card-actions align="right">
-      <q-btn flat label="Cancel" color="primary" @click="onDialogHide" />
-      <q-btn flat label="OK" color="primary" @click="onDialogOK" />
+      <ButtonUi.ButtonCancel @click="onDialogHide" />
+      <ButtonUi.ButtonOk @click="onDialogOK" />
     </q-card-actions>
 
   </q-card>
@@ -21,6 +21,8 @@
 <script setup lang="ts">
 
 import { useDialogPluginComponent } from 'quasar'
+
+import { ButtonUi } from '@/modules/gui/buttons'
 
 defineProps<{ message: string }>()
 defineEmits([...useDialogPluginComponent.emits])

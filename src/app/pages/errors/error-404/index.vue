@@ -7,7 +7,7 @@
 
     <div class="text-h2" style="opacity:.4">Oops. Nothing here...</div>
 
-    <ButtonsUi.ButtonRegular class="q-mt-xl bg-white" to="/" label="Go Home" text-color="primary" no-caps outline />
+    <ButtonUi.Button class="q-mt-xl bg-white" to="/" label="Go Home" text-color="primary" no-caps outline />
 
   </div>
 </div>
@@ -25,6 +25,6 @@ export default {
 
 <script setup lang="ts">
 
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 
 </script>

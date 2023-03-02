@@ -20,5 +20,5 @@ export function create (dto: Partial<IOrderDto>): IOrder {
 }
 
 export function clone (order: IOrder): IOrder {
-  return new Order({ ...order.dto })
+  return new Order(structuredClone(order.dto))
 }

@@ -3,7 +3,7 @@
 <q-header class="bg-primary text-white" height-hint="98" elevated>
   <q-toolbar>
 
-    <ButtonsUi.ButtonRegular icon="menu" round @click="toggleLeftDrawer" />
+    <ButtonUi.Button icon="menu" round flat @click="toggleLeftDrawer" />
 
     <SeparatorsUi.RegularSeparator dark />
 
@@ -15,11 +15,11 @@
 
     <SeparatorsUi.RegularSeparator dark />
 
-    <ButtonsUi.ButtonRoute :to="routes.SETTINGS" label="Settings" />
+    <ButtonUi.ButtonRoute :to="routes.SETTINGS" label="Settings" flat />
 
     <SeparatorsUi.RegularSeparator dark />
 
-    <ButtonsUi.ButtonRoute :to="routes.DUBUG" label="DUBUG" />
+    <ButtonUi.ButtonRoute :to="routes.DUBUG" label="DUBUG" flat />
 
     <SeparatorsUi.RegularSeparator dark />
 
@@ -36,7 +36,7 @@
 
 import { appConsts } from 'src/app'
 import useAppStore from '@/stores/app'
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { SeparatorsUi } from '@/modules/gui/separators'
 
 const { routes, toggleLeftDrawer } = useAppStore()

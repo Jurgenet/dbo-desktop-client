@@ -9,5 +9,3 @@ export { default as notesApiRequests } from './api/notes.api.requests'
 export { default as notesApiService } from './api/notes.api.service'
 
 export { default as useNotesStore } from './hooks/notes.hooks.store'
-
-export * as notesTableUtils from './utils/notes.utils.table'

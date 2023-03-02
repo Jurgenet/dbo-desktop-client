@@ -24,5 +24,5 @@ export function create (dto: Partial<IKnowledgeDto>): IKnowledge {
 }
 
 export function clone (knowledge: IKnowledge): IKnowledge {
-  return new Knowledge({ ...knowledge.dto })
+  return new Knowledge(structuredClone(knowledge.dto))
 }

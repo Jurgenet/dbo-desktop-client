@@ -52,8 +52,8 @@
       @cancel="onDialogHide"
       @apply="onApply"
     >
-      <ButtonsUi.ButtonRegular label="Remove self styles" @click="onRemoveSelfStyles" />
-      <ButtonsUi.ButtonRegular :disable="!markersStore.bufferStyles" label="Apply buffer styles" @click="onPasteStylesFromBuffer" />
+      <ButtonUi.Button label="Remove self styles" @click="onRemoveSelfStyles" />
+      <ButtonUi.Button :disable="!markersStore.bufferStyles" label="Apply buffer styles" @click="onPasteStylesFromBuffer" />
   </CardsUi.CardActionsCancelApply>
 
   </q-card>
@@ -70,7 +70,7 @@ import ExampeBadges from './example-badges/index.vue'
 
 import { useMarkersStore } from '@/stores/markers'
 import { CardsUi } from '@/modules/gui/cards'
-import { ButtonsUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/buttons'
 import { InputsUi } from '@/modules/gui/inputs'
 import { markersClasses } from '@/modules/db/subjects/markers'
 

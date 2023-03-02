@@ -5,7 +5,9 @@ import useAppStore from '@/stores/app'
 
 import { useOrdersStore as useOrdersStoreComposables } from '@/modules/db/subjects/orders'
 
-export const useOrdersStore = defineStore('orders', () => {
+const STORE_NAME = 'orders'
+
+export const useOrdersStore = defineStore(STORE_NAME, () => {
   const appStore = useAppStore()
   const ordersStore = useOrdersStoreComposables()
 

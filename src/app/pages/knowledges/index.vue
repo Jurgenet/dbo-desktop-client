@@ -71,6 +71,8 @@ export default {
 
 <script setup lang="ts">
 
+import { toRaw } from 'vue'
+
 import { useKnowledgesStore } from '@/stores/knowledges'
 
 import { PagesUi } from '@/modules/gui/pages'
@@ -91,7 +93,7 @@ const knowledgesStore = useKnowledgesStore()
 function onCreateOrEdit (knowledgeRow: knowledgesClasses.IKnowledge | null) {
   const isCreating = knowledgeRow === null
   const knowledge = knowledgeRow
-    ? knowledgesFabrics.clone(knowledgeRow)
+    ? knowledgesFabrics.clone(toRaw(knowledgeRow))
     : knowledgesFabrics.create({ title: knowledgesStore.filter })
 
   useKnowledgesDialogCreation({ isCreating, knowledge })
