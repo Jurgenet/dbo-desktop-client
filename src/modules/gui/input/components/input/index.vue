@@ -10,9 +10,18 @@
 
 </template>
 
+<script lang="ts">
+
+export default {
+  name: 'TheInput',
+  inheritAttrs: true,
+}
+
+</script>
+
 <script setup lang="ts">
 
-defineProps<{ modelValue: string }>()
+defineProps<{ modelValue: string | number }>()
 
 // eslint-disable-next-line func-call-spacing
 const emits = defineEmits<{

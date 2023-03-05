@@ -16,9 +16,10 @@
     <q-space />
     <!-- <div>{{ picture.dto.markers }}</div> -->
     <q-card-actions class="justify-start q-pa-xs">
+      <ButtonUi.ButtonMiniEdit @click="onEdit" />
+      <ButtonUi.ButtonMiniCopy :clip-value="imageSrc" />
       <q-space />
-      <ButtonUi.Button size="10px" icon="edit" round @click="onEdit" />
-      <ButtonUi.ButtonCopyText :text="imageSrc" size="10px" icon="content_copy" round/>
+      <ButtonUi.ButtonMiniRemove @click="onRemove" />
     </q-card-actions>
   </q-card-section>
 
@@ -34,8 +35,12 @@ import useAppStore from '@/stores/app'
 import { usePicturesStore } from '@/stores/pictures'
 
 import { ButtonUi } from '@/modules/gui/buttons'
-import { dialogsFabrics } from '@/modules/gui/dialogs'
-import { picturesClasses, usePicturesDialogEditor } from '@/modules/db/subjects/pictures'
+import { dialogsFabrics, useCustomDialogConfirmation } from '@/modules/gui/dialogs'
+import {
+  picturesConsts,
+  picturesClasses,
+  usePicturesDialogEditor,
+} from '@/modules/db/subjects/pictures'
 
 const appStore = useAppStore()
 const picturesStore = usePicturesStore()
@@ -55,6 +60,11 @@ function onEdit () {
     .onOk(({ appliedPicture }: { appliedPicture: picturesClasses.IPicture }) => {
       picturesStore.updateOne(appliedPicture)
     })
+}
+
+function onRemove () {
+  useCustomDialogConfirmation({ message: picturesConsts.MESSAGES.DELETE_CONFIRMATION })
+    .onOk(() => picturesStore.removeOne(props.picture._id))
 }
 
 </script>

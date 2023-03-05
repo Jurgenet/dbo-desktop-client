@@ -10,7 +10,7 @@
     <q-card-section class="q-pt-none">
       <div class="column q-gutter-sm">
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="markerRef.dto._id"
           :readonly="!isCreating"
           :rules="[(val: string) => !!val || 'Field is required']"
@@ -71,7 +71,7 @@ import ExampeBadges from './example-badges/index.vue'
 import { useMarkersStore } from '@/stores/markers'
 import { CardsUi } from '@/modules/gui/cards'
 import { ButtonUi } from '@/modules/gui/buttons'
-import { InputsUi } from '@/modules/gui/inputs'
+import { InputUi } from '@/modules/gui/input'
 import { markersClasses } from '@/modules/db/subjects/markers'
 
 const props = defineProps<{ isCreating: boolean, marker: markersClasses.IMaker }>()

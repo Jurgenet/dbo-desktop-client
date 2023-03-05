@@ -10,32 +10,32 @@
     <q-card-section class="q-pt-none">
       <div class="column q-gutter-sm">
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.title"
           :rules="[(val: string) => !!val || 'Field is required']"
           label="Title"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.group"
           label="Group"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.email"
           label="Email"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.login"
           label="Login"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.password"
           label="Password"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.link"
           label="Link"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="accountRef.dto.text"
           label="Text"
           type="textarea"
@@ -60,7 +60,7 @@ import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
 import { CardsUi } from '@/modules/gui/cards'
-import { InputsUi } from '@/modules/gui/inputs'
+import { InputUi } from '@/modules/gui/input'
 
 import { accountsClasses } from '@/modules/db/subjects/accounts'
 

@@ -1,5 +1,7 @@
 export const COLUMN_TYPES = {
   ROW: 'ROW',
+  COVER: 'COVER',
+  COPIABLE: 'COPIABLE',
   ACTIONS: 'ACTIONS',
 }
 
@@ -33,7 +35,7 @@ export const COLUMN_TITLE = {
 
 export const COLUMN_ACTIONS = {
   ...COLUMN_DEFAULT,
-  name: 'actions',
   type: COLUMN_TYPES.ACTIONS,
+  name: 'actions',
   classes: 'TableCellFullWidth',
 }

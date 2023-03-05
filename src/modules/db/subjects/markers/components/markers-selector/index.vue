@@ -39,7 +39,7 @@ import { ref, watch } from 'vue'
 import { useMarkersStore } from '@/stores/markers'
 
 import { ButtonUi } from '@/modules/gui/buttons'
-import { selectsUtils } from '@/modules/gui/selects'
+import { selectUtils } from '@/modules/gui/select'
 import {
   markersClasses,
   markersFabrics,
@@ -63,7 +63,7 @@ const filteredMarkers = ref(markersStore.markers.value)
 const newMarker = ref(markersFabrics.create())
 
 watch(markers, (markers) => {
-  emits('reselect', selectsUtils.optionsToIds(markers ?? []))
+  emits('reselect', selectUtils.optionsToIds(markers ?? []))
 }, { deep: true })
 
 function onTypingMarkerId (markerId: string) {

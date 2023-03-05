@@ -3,7 +3,6 @@
 <div class="row q-gutter-x-sm">
   <ButtonUi.Button label="regular"/>
   <ButtonUi.ButtonCancel />
-  <ButtonUi.ButtonCopyText label="Copy Text" text="something important" />
   <ButtonUi.ButtonCreate />
   <ButtonUi.ButtonRoute label="route" />
   <ButtonUi.ButtonOk />
@@ -12,6 +11,7 @@
 <div class="q-mt-md row q-gutter-x-sm">
   <ButtonUi.ButtonMini tooltip="mini button"/>
   <ButtonUi.ButtonMiniClose tooltip="mini button close"/>
+  <ButtonUi.ButtonMiniCopy tooltip="mini button copy" clip-value="something important" />
   <ButtonUi.ButtonMiniEdit tooltip="mini button edit"/>
   <ButtonUi.ButtonMiniExpander
     :is-expanded="isExpandedRef"
@@ -19,7 +19,7 @@
     @click="isExpandedRef = !isExpandedRef"
   />
   <ButtonUi.ButtonMiniForward tooltip="mini button forward"/>
-  <ButtonUi.ButtonMiniLink tooltip="mini button link"/>
+  <ButtonMiniLinkWithClipboardHOC tooltip="mini button link withClippoard HOC" clip-value="withClipboard HOC"/>
   <ButtonUi.ButtonMiniMask tooltip="mini button mask password"/>
   <ButtonUi.ButtonMiniOpenTab tooltip="mini button open tab"/>
   <ButtonUi.ButtonMiniPin
@@ -47,8 +47,11 @@ export default {
 import { ref } from 'vue'
 
 import { ButtonUi } from '@/modules/gui/buttons'
+import { withClipboard } from '@/modules/core/clipboard'
 
 const isPinnedRef = ref(false)
 const isExpandedRef = ref(false)
+
+const ButtonMiniLinkWithClipboardHOC = withClipboard(ButtonUi.ButtonMiniLink)
 
 </script>

@@ -9,7 +9,7 @@ export function create (dto: Partial<IAccountDto>): IAccount {
     password: '',
     link: '',
     markers: [],
-    text: [],
+    text: '',
     ...dto,
   })
 }

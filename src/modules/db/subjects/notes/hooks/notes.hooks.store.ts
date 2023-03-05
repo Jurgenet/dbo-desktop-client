@@ -1,6 +1,6 @@
 import { ref, Ref, computed, watch } from 'vue'
 
-import { selectsUtils } from '@/modules/gui/selects'
+import { selectUtils } from '@/modules/gui/select'
 import { useAsyncState } from '@/modules/state'
 import { usePagination } from '@/modules/core/pagination'
 import {
@@ -58,7 +58,7 @@ export default function useNotesStore () {
   }
 
   function getOptionsByTitles (ids: string[]) {
-    return selectsUtils.getOptionsByTitles(notes.value, ids)
+    return selectUtils.getOptionsByTitles(notes.value, ids)
   }
 
   // filters

@@ -10,30 +10,30 @@
     <q-card-section class="q-pt-none">
       <div class="column q-gutter-sm">
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="pictureRef.dto._id"
           label="ID"
           readonly
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="pictureRef.dto.url"
           label="Url"
           readonly
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="pictureRef.dto.size"
           label="Size"
           readonly
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="pictureRef.dto.title"
           label="Title"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="pictureRef.dto.group"
           label="Group"
         />
@@ -57,7 +57,7 @@ import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
 import { ButtonUi } from '@/modules/gui/buttons'
-import { InputsUi } from '@/modules/gui/inputs'
+import { InputUi } from '@/modules/gui/input'
 import { picturesClasses } from '@/modules/db/subjects/pictures'
 
 const props = defineProps<{ picture: picturesClasses.IPicture }>()

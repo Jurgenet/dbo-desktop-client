@@ -20,7 +20,7 @@
           dense
           @reselect="notesStore.searchQuery = $event"
         />
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-else
           v-model="notesStore.searchQuery"
           label="search text"
@@ -82,7 +82,7 @@
 import { useNotesStore } from '@/stores/notes'
 
 import { ButtonUi } from '@/modules/gui/buttons'
-import { InputsUi } from '@/modules/gui/inputs'
+import { InputUi } from '@/modules/gui/input'
 import { PaginationUi } from '@/modules/core/pagination'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { NotesUi, notesClasses } from '@/modules/db/subjects/notes'

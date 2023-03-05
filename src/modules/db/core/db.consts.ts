@@ -1,5 +1,3 @@
-import { tableConsts } from '@/modules/gui/tables'
-
 export const API_URL = process.env.apiUrl
 export const FILES_UPLOAD_URL = process.env.filesUploadUrl
 export const FILES_STATIC_URL = process.env.filesStaticUrl

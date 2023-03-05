@@ -10,7 +10,7 @@
     <q-card-section class="q-pt-none">
       <div class="column q-gutter-sm">
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="knowledgeRef.dto.title"
           label="Title"
           :rules="[(val: string) => !!val || 'Field is required']"
@@ -28,22 +28,22 @@
               outlined
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.group"
               label="Group"
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.date"
               label="Date"
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.platform"
               label="Platform"
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.author"
               label="Author"
             />
@@ -55,17 +55,17 @@
               outlined
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.cover"
               label="Cover"
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.location"
               label="Location"
             />
 
-            <InputsUi.RegularInput
+            <InputUi.Input
               v-model="knowledgeRef.dto.link"
               label="Link"
             />
@@ -106,7 +106,7 @@ import { useDialogPluginComponent } from 'quasar'
 
 import { CardsUi } from '@/modules/gui/cards'
 import { ExpansionsUi } from '@/modules/gui/expansions'
-import { InputsUi } from '@/modules/gui/inputs'
+import { InputUi } from '@/modules/gui/input'
 import { EditorsUi } from '@/modules/gui/editors'
 import { RatingsUi } from '@/modules/gui/ratings'
 

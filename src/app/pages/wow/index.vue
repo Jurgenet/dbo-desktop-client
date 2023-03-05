@@ -37,12 +37,20 @@
         />
 
         <q-td v-for="col in props.cols" :key="col.name" :props="props">
-          <TablesUi.TableRowActions
-            v-bind="{ col, row: props.row }"
-            @edit="onCreateOrEdit"
-            @remove="onRemove"
-            @copy-reference="onCopyLink"
-          />
+
+          <TablesUi.TableCellValueCopiable :type="col.type" :value="col.value" />
+
+          <div v-if="col.type === tableConsts.COLUMN_TYPES.COVER">
+            <WowUi.Cover :src="col.value" />
+          </div>
+
+          <TablesUi.TableCellValueActions :type="col.type">
+            <ButtonUi.ButtonMiniEdit @click="onCreateOrEdit(props.row)" />
+            <ButtonUi.ButtonMiniRemove @click="onRemove(props.row._id)" />
+          </TablesUi.TableCellValueActions>
+
+          <TablesUi.TableCellValueRow :type="col.type" :value="col.value" />
+
         </q-td>
 
       </q-tr>
@@ -72,11 +80,13 @@ import { toRaw } from 'vue'
 import { useWowStore } from '@/stores/wow'
 
 import { PagesUi } from '@/modules/gui/pages'
-import { TablesUi } from '@/modules/gui/tables'
+import { ButtonUi } from '@/modules/gui/buttons'
+import { TablesUi, tableConsts } from '@/modules/gui/tables'
 
 import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
-import { clipboardUtils } from '@/modules/core/clipboard'
+// import { clipboardUtils } from '@/modules/core/clipboard'
 import {
+  WowUi,
   wowConsts,
   wowClasses,
   wowFabrics,
@@ -105,10 +115,6 @@ function onCreateOrEdit (subjectRow: wowClasses.ISubject| null) {
 function onRemove (id: string) {
   useCustomDialogConfirmation({ message: wowConsts.MESSAGES.DELETE_CONFIRMATION })
     .onOk(() => wowStore.removeOne(id))
-}
-
-function onCopyLink (link: string) {
-  clipboardUtils.clip(link)
 }
 
 </script>

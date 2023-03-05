@@ -10,47 +10,47 @@
     <q-card-section class="q-pt-none">
       <div class="column q-gutter-sm">
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.date"
           :rules="[(val: string) => !!val || 'Field is required']"
           label="Date"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.group"
           :rules="[(val: string) => !!val || 'Field is required']"
           label="Group"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.title"
           :rules="[(val: string) => !!val || 'Field is required']"
           label="Title"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model.number="orderRef.dto.price"
           type="number"
           label="Price"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model.number="orderRef.dto.amount"
           type="number"
           label="Amount"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.vendor"
           label="Vendor"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.seller"
           label="Seller"
         />
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.link"
           label="Link"
         />
@@ -62,7 +62,7 @@
           autofocus
         /> -->
 
-        <InputsUi.RegularInput
+        <InputUi.Input
           v-model="orderRef.dto.text"
           label="Text"
           type="textarea"
@@ -87,7 +87,7 @@ import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
 import { ButtonUi } from '@/modules/gui/buttons'
-import { InputsUi } from '@/modules/gui/inputs'
+import { InputUi } from '@/modules/gui/input'
 
 import { ordersClasses } from '@/modules/db/subjects/orders'
 

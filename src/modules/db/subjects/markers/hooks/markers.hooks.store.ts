@@ -1,6 +1,6 @@
 import { ref, Ref, computed } from 'vue'
 
-import { selectsUtils } from '@/modules/gui/selects'
+import { selectUtils } from '@/modules/gui/select'
 import { useAsyncState } from '@/modules/state'
 import {
   markersDto,
@@ -60,10 +60,10 @@ export default function useMarkersStore () {
 
   // Getters and computed
   function getMarkersByIds (ids: string[]) {
-    return selectsUtils.getOptionsByIds(markers.value, ids)
+    return selectUtils.getOptionsByIds(markers.value, ids)
   }
 
-  const getAncestorById = (ancestorId: string) => selectsUtils.getOptionById(markers.value, ancestorId)
+  const getAncestorById = (ancestorId: string) => selectUtils.getOptionById(markers.value, ancestorId)
 
   return {
     ...asyncState,

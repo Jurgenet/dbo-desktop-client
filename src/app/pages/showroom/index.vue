@@ -8,6 +8,7 @@
       <TabsUi.Tab name="buttons" label="buttons" />
       <TabsUi.Tab name="cards" label="cards" />
       <TabsUi.Tab name="tables" label="tables" />
+      <TabsUi.Tab name="selects" label="selects" />
     </template>
 
     <template #panels>
@@ -20,6 +21,10 @@
         <ButtonsRoom />
       </TabsUi.TabPanel>
 
+      <TabsUi.TabPanel name="selects">
+        <SelectsRoom />
+      </TabsUi.TabPanel>
+
       <TabsUi.TabPanel name="cards">
         <CardsRoom />
       </TabsUi.TabPanel>
@@ -27,6 +32,7 @@
       <TabsUi.TabPanel name="tables">
         <TablesRoom />
       </TabsUi.TabPanel>
+
     </template>
 
   </TabsUi.TabList>
@@ -50,6 +56,7 @@ import { TabsUi } from '@/modules/gui/tabs'
 
 import TyposRoom from './typos/index.vue'
 import ButtonsRoom from './buttons/index.vue'
+import SelectsRoom from './selects/index.vue'
 import CardsRoom from './cards/index.vue'
 import TablesRoom from './tables/index.vue'
 
