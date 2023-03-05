@@ -4,35 +4,13 @@
   <TabsUi.TabList activeTab="typos">
 
     <template #tabs>
-      <TabsUi.Tab name="typos" label="typos" />
-      <TabsUi.Tab name="buttons" label="buttons" />
-      <TabsUi.Tab name="cards" label="cards" />
-      <TabsUi.Tab name="tables" label="tables" />
-      <TabsUi.Tab name="selects" label="selects" />
+      <TabsUi.Tab v-for="room in rooms" :key="room.name" :name="room.name" :label="room.name" />
     </template>
 
     <template #panels>
-
-      <TabsUi.TabPanel name="typos">
-        <TyposRoom />
+      <TabsUi.TabPanel v-for="room in rooms" :key="room.name" :name="room.name">
+        <component :is="room.component" />
       </TabsUi.TabPanel>
-
-      <TabsUi.TabPanel name="buttons">
-        <ButtonsRoom />
-      </TabsUi.TabPanel>
-
-      <TabsUi.TabPanel name="selects">
-        <SelectsRoom />
-      </TabsUi.TabPanel>
-
-      <TabsUi.TabPanel name="cards">
-        <CardsRoom />
-      </TabsUi.TabPanel>
-
-      <TabsUi.TabPanel name="tables">
-        <TablesRoom />
-      </TabsUi.TabPanel>
-
     </template>
 
   </TabsUi.TabList>
@@ -51,13 +29,40 @@ export default {
 
 <script setup lang="ts">
 
+import { defineAsyncComponent } from 'vue'
+
 import { PagesUi } from '@/modules/gui/pages'
 import { TabsUi } from '@/modules/gui/tabs'
 
-import TyposRoom from './typos/index.vue'
-import ButtonsRoom from './buttons/index.vue'
-import SelectsRoom from './selects/index.vue'
-import CardsRoom from './cards/index.vue'
-import TablesRoom from './tables/index.vue'
+const rooms = [
+  {
+    name: 'typos',
+    component: defineAsyncComponent(() => import('./typos/index.vue')),
+  },
+  {
+    name: 'buttons',
+    component: defineAsyncComponent(() => import('./buttons/index.vue')),
+  },
+  {
+    name: 'selects',
+    component: defineAsyncComponent(() => import('./selects/index.vue')),
+  },
+  {
+    name: 'cards',
+    component: defineAsyncComponent(() => import('./cards/index.vue')),
+  },
+  {
+    name: 'tables',
+    component: defineAsyncComponent(() => import('./tables/index.vue')),
+  },
+  {
+    name: 'expansion',
+    component: defineAsyncComponent(() => import('./expansions/index.vue')),
+  },
+  {
+    name: 'options',
+    component: defineAsyncComponent(() => import('./options/index.vue')),
+  },
+]
 
 </script>

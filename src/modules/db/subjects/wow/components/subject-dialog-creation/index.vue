@@ -86,6 +86,15 @@
 
 </template>
 
+<script lang="ts">
+
+export default {
+  name: 'SubjectDialogCreation',
+  inheritAttrs: true,
+}
+
+</script>
+
 <script setup lang="ts">
 
 import { ref } from 'vue'

@@ -17,11 +17,11 @@
 
         <MarkersUi.MarkersSelector :markers-ids="state.markers" @reselect="state.markers = $event" />
 
-        <ExpansionsUi.ExpansionList>
-        <ExpansionsUi.RegularExpansion label="Links">
+        <ExpansionUi.ExpansionList>
+        <ExpansionUi.Expansion label="Links">
           <NotesUi.NoteLinksEditor :links="state.links" @change="state.links = $event" />
-        </ExpansionsUi.RegularExpansion>
-      </ExpansionsUi.ExpansionList>
+        </expansionUi.Expansion>
+      </expansionUi.ExpansionList>
 
         <EditorsUi.MarkdownEditor v-model="state.text" class="markdownEditor" />
 
@@ -31,15 +31,15 @@
 
     <div v-else class="column q-mt-md">
 
-      <ExpansionsUi.ExpansionList>
-        <ExpansionsUi.RegularExpansion
+      <ExpansionUi.ExpansionList>
+        <ExpansionUi.Expansion
           :caption="note.dto.links.length === 0 ? 'no links' : `${note.dto.links.length} link(s)`"
           label="Links"
           dense
         >
           <NotesUi.NoteLinksView :links="note.dto.links" />
-        </ExpansionsUi.RegularExpansion>
-      </ExpansionsUi.ExpansionList>
+        </expansionUi.Expansion>
+      </expansionUi.ExpansionList>
 
       <EditorsUi.MarkdownEditor v-model="note.dto.text" preview-only />
     </div>
@@ -68,7 +68,7 @@ import ActionControls from './action-controls/index.vue'
 import { useNotesStore } from '@/stores/notes'
 
 import { tabsDto } from '@/modules/gui/tabs'
-import { ExpansionsUi } from '@/modules/gui/expansions'
+import { ExpansionUi } from '@/modules/gui/expansion'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { EditorsUi } from '@/modules/gui/editors'
 import { NotesUi, notesClasses, notesFabrics, notesApiService } from '@/modules/db/subjects/notes'

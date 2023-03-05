@@ -16,7 +16,7 @@
           :rules="[(val: string) => !!val || 'Field is required']"
         />
 
-        <ExpansionsUi.RegularExpansion label="Main Data" :isOpened="true">
+        <ExpansionUi.Expansion label="Main Data" :isOpened="true">
           <div class="column q-gutter-sm">
 
             <q-select
@@ -78,11 +78,11 @@
             </div>
 
           </div>
-        </ExpansionsUi.RegularExpansion>
+        </expansionUi.Expansion>
 
-        <ExpansionsUi.RegularExpansion label="Content Data">
+        <ExpansionUi.Expansion label="Content Data">
           <EditorsUi.TextEditor v-model="knowledgeRef.dto.text" />
-        </ExpansionsUi.RegularExpansion>
+        </expansionUi.Expansion>
 
       <!-- TOOD: rating -->
 
@@ -105,7 +105,7 @@ import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
 import { CardsUi } from '@/modules/gui/cards'
-import { ExpansionsUi } from '@/modules/gui/expansions'
+import { ExpansionUi } from '@/modules/gui/expansion'
 import { InputUi } from '@/modules/gui/input'
 import { EditorsUi } from '@/modules/gui/editors'
 import { RatingsUi } from '@/modules/gui/ratings'

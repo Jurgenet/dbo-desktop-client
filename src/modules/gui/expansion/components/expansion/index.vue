@@ -7,7 +7,6 @@
   :label="label"
   :caption="caption"
   expand-separator
-  switch-toggle-side
 >
   <div class="q-pa-sm">
     <slot />
@@ -15,6 +14,15 @@
 </q-expansion-item>
 
 </template>
+
+<script lang="ts">
+
+export default {
+  name: 'TheExpansion',
+  inheritAttrs: true,
+}
+
+</script>
 
 <script setup lang="ts">
 

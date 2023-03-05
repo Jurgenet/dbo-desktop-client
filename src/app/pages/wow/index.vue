@@ -1,6 +1,17 @@
 <template>
 
-<PagesUi.Page>
+<PagesUi.Page class="q-gutter-y-md">
+
+  <ExpansionUi.ExpansionList>
+    <ExpansionUi.Expansion label="Filters" icon="filter_list" is-opened>
+      <OptionUi.OptionGroup
+        v-model="wowStore.filter"
+        :options="filterOptions"
+        inline
+      />
+    </ExpansionUi.Expansion>
+  </ExpansionUi.ExpansionList>
+
   <q-table
     :loading="wowStore.isBusy"
     :rows="wowStore.subjects"
@@ -60,6 +71,7 @@
     </template>
 
   </q-table>
+
 </PagesUi.Page>
 
 </template>
@@ -80,6 +92,8 @@ import { toRaw } from 'vue'
 import { useWowStore } from '@/stores/wow'
 
 import { PagesUi } from '@/modules/gui/pages'
+import { ExpansionUi } from '@/modules/gui/expansion'
+import { OptionUi, optionUtils } from '@/modules/gui/option'
 import { ButtonUi } from '@/modules/gui/buttons'
 import { TablesUi, tableConsts } from '@/modules/gui/tables'
 
@@ -95,6 +109,8 @@ import {
 } from '@/modules/db/subjects/wow'
 
 const wowStore = useWowStore()
+
+const filterOptions = optionUtils.getOptionsFromList(Object.keys(wowClasses.ISubjectTypes))
 
 function onCreateOrEdit (subjectRow: wowClasses.ISubject| null) {
   const isCreating = subjectRow === null
