@@ -34,8 +34,8 @@ import { computed } from 'vue'
 import useAppStore from '@/stores/app'
 import { usePicturesStore } from '@/stores/pictures'
 
-import { ButtonUi } from '@/modules/gui/buttons'
-import { dialogsFabrics, useCustomDialogConfirmation } from '@/modules/gui/dialogs'
+import { ButtonUi } from '@/modules/gui/button'
+import { dialogsFabric, useCustomDialogConfirmation } from '@/modules/gui/dialog'
 import {
   picturesConsts,
   picturesClasses,
@@ -52,7 +52,7 @@ const props = defineProps<{
 const imageSrc = computed(() => `${appStore.filesStaticUrl.value}/${props.picture.dto.url}`)
 
 function onFullscreen () {
-  dialogsFabrics.createShowImageDialog({ title: props.picture.dto.title, src: imageSrc.value })
+  dialogsFabric.createShowImageDialog({ title: props.picture.dto.title, src: imageSrc.value })
 }
 
 function onEdit () {

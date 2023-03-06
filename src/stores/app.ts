@@ -4,7 +4,7 @@ import { useLoggerStore } from '@/stores/logger'
 import { useMarkersStore } from '@/stores/markers'
 
 import { useDbApiStore } from '@/modules/db'
-import { useDrawersStore } from '@/modules/gui/drawers'
+import { useDrawerStore } from '@/modules/gui/drawer'
 import { useAsyncState } from '@/modules/state'
 
 const MODULE = 'app.store'
@@ -15,7 +15,7 @@ let store: any
 function createAppStore () {
   const loggerStore = useLoggerStore()
   const dbApiStore = useDbApiStore()
-  const drawersStore = useDrawersStore()
+  const drawerStore = useDrawerStore()
   const asyncState = useAsyncState()
 
   async function execute () {
@@ -32,7 +32,7 @@ function createAppStore () {
     routes: appConsts.ROUTES,
     ...asyncState,
     ...dbApiStore,
-    ...drawersStore,
+    ...drawerStore,
     execute,
   }
 }

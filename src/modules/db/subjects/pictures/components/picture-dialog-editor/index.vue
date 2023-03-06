@@ -56,7 +56,7 @@
 import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { InputUi } from '@/modules/gui/input'
 import { picturesClasses } from '@/modules/db/subjects/pictures'
 

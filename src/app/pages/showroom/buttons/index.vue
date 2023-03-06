@@ -46,7 +46,7 @@ export default {
 
 import { ref } from 'vue'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { withClipboard } from '@/modules/core/clipboard'
 
 const isPinnedRef = ref(false)

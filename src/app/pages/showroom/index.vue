@@ -1,20 +1,20 @@
 <template>
 
-<PagesUi.Page no-padding>
-  <TabsUi.TabList activeTab="typos">
+<PageUi.Page no-padding>
+  <TabUi.TabList activeTab="typos">
 
     <template #tabs>
-      <TabsUi.Tab v-for="room in rooms" :key="room.name" :name="room.name" :label="room.name" />
+      <TabUi.Tab v-for="room in rooms" :key="room.name" :name="room.name" :label="room.name" />
     </template>
 
     <template #panels>
-      <TabsUi.TabPanel v-for="room in rooms" :key="room.name" :name="room.name">
+      <TabUi.TabPanel v-for="room in rooms" :key="room.name" :name="room.name">
         <component :is="room.component" />
-      </TabsUi.TabPanel>
+      </TabUi.TabPanel>
     </template>
 
-  </TabsUi.TabList>
-</PagesUi.Page>
+  </TabUi.TabList>
+</PageUi.Page>
 
 </template>
 
@@ -31,8 +31,8 @@ export default {
 
 import { defineAsyncComponent } from 'vue'
 
-import { PagesUi } from '@/modules/gui/pages'
-import { TabsUi } from '@/modules/gui/tabs'
+import { PageUi } from '@/modules/gui/page'
+import { TabUi } from '@/modules/gui/tab'
 
 const rooms = [
   {

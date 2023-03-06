@@ -48,13 +48,13 @@
       </div>
     </q-card-section>
 
-    <CardsUi.CardActionsCancelApply
+    <CardUi.CardActionsCancelApply
       @cancel="onDialogHide"
       @apply="onApply"
     >
       <ButtonUi.Button label="Remove self styles" @click="onRemoveSelfStyles" />
       <ButtonUi.Button :disable="!markersStore.bufferStyles" label="Apply buffer styles" @click="onPasteStylesFromBuffer" />
-  </CardsUi.CardActionsCancelApply>
+  </CardUi.CardActionsCancelApply>
 
   </q-card>
 </q-dialog>
@@ -69,8 +69,8 @@ import { useDialogPluginComponent } from 'quasar'
 import ExampeBadges from './example-badges/index.vue'
 
 import { useMarkersStore } from '@/stores/markers'
-import { CardsUi } from '@/modules/gui/cards'
-import { ButtonUi } from '@/modules/gui/buttons'
+import { CardUi } from '@/modules/gui/card'
+import { ButtonUi } from '@/modules/gui/button'
 import { InputUi } from '@/modules/gui/input'
 import { markersClasses } from '@/modules/db/subjects/markers'
 

@@ -16,9 +16,9 @@
         <MarkersUi.MarkersTable />
       </q-card-section>
 
-      <CardsUi.CardActions>
-        <DialogsUi.DialogButtonOk />
-      </CardsUi.CardActions>
+      <CardUi.CardActions>
+        <DialogUi.DialogButtonOk />
+      </CardUi.CardActions>
 
     </q-card>
   </q-dialog>
@@ -30,8 +30,8 @@
 
 import { ref } from 'vue'
 
-import { DialogsUi } from '@/modules/gui/dialogs'
-import { CardsUi } from '@/modules/gui/cards'
+import { DialogUi } from '@/modules/gui/dialog'
+import { CardUi } from '@/modules/gui/card'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 
 const isVisibleRef = ref(false)

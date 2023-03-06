@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 
 defineProps<{
   isEditing: boolean

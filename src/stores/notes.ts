@@ -3,7 +3,7 @@ import { defineStore } from 'pinia'
 
 import useAppStore from '@/stores/app'
 
-import { useTabsDynamic } from '@/modules/gui/tabs'
+import { useTabDynamic } from '@/modules/gui/tab'
 import { useNotesStore as useNotesStoreComposables } from '@/modules/db/subjects/notes'
 
 const STORE_NAME = 'notes'
@@ -17,7 +17,7 @@ export const useNotesStore = defineStore(STORE_NAME, () => {
   watch(() => appStore.isProdServer.value, () => notesStore.fetchAll())
 
   return {
-    ...useTabsDynamic(),
+    ...useTabDynamic(),
     ...notesStore,
   }
 })

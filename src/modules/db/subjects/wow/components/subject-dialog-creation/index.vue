@@ -42,10 +42,14 @@
           label="Price"
         />
 
-        <!-- <InputUi.Input
+        <SelectUi.Select
           v-model="subjectRef.dto.professions"
-          label="Professions"
-        /> -->
+          :options="wowStore.professions"
+          label="professions"
+          class="col-1"
+          multiple
+          use-chips
+        />
 
         <!-- <InputUi.Input
           v-model="subjectRef.dto.options"
@@ -76,7 +80,7 @@
       </div>
     </q-card-section>
 
-    <CardsUi.CardActionsCancelApply
+    <CardUi.CardActionsCancelApply
       @cancel="onDialogHide"
       @apply="onApply"
     />
@@ -100,11 +104,15 @@ export default {
 import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
-import { CardsUi } from '@/modules/gui/cards'
+import { useWowStore } from '@/stores/wow'
+
+import { CardUi } from '@/modules/gui/card'
 import { SelectUi } from '@/modules/gui/select'
 import { InputUi } from '@/modules/gui/input'
 
 import { wowClasses } from '@/modules/db/subjects/wow'
+
+const wowStore = useWowStore()
 
 const props = defineProps<{ isCreating: boolean, subject: wowClasses.ISubject }>()
 defineEmits([...useDialogPluginComponent.emits])

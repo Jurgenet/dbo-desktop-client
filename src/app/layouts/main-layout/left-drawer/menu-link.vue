@@ -17,10 +17,10 @@
 
 <script setup lang="ts">
 
-import { drawersDto } from '@/modules/gui/drawers'
+import { drawerDto } from '@/modules/gui/drawer'
 
 defineProps<{
-  menuLink: drawersDto.TDrawerMenuLink
+  menuLink: drawerDto.TDrawerMenuLink
 }>()
 
 </script>

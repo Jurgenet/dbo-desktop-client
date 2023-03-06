@@ -20,7 +20,7 @@
 
 import { computed } from 'vue'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import { notesDto } from '@/modules/db/subjects/notes'
 

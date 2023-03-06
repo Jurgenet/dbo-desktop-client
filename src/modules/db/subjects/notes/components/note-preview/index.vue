@@ -41,7 +41,7 @@
 
 <script setup lang="ts">
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { MarkersUi } from '@/modules/db/subjects/markers'
 import { notesClasses } from '@/modules/db/subjects/notes'
 

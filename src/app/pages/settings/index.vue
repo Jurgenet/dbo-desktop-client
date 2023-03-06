@@ -1,7 +1,7 @@
 <template>
 
-<PagesUi.Page>
-  <TabsUi.TabList activeTab="main">
+<PageUi.Page>
+  <TabUi.TabList activeTab="main">
 
   <template #tabs>
     <q-tab name="main" label="main" />
@@ -20,8 +20,8 @@
 
   </template>
 
-  </TabsUi.TabList>
-</PagesUi.Page>
+  </TabUi.TabList>
+</PageUi.Page>
 
 </template>
 
@@ -36,7 +36,7 @@ export default {
 
 <script setup lang="ts">
 
-import { PagesUi } from '@/modules/gui/pages'
-import { TabsUi } from '@/modules/gui/tabs'
+import { PageUi } from '@/modules/gui/page'
+import { TabUi } from '@/modules/gui/tab'
 
 </script>

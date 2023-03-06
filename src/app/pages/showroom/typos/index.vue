@@ -1,18 +1,18 @@
 <template>
 
 <div class="column typos">
-  <TyposUi.H1 text="Headline 1 (TyposUi.H1)" />
-  <TyposUi.H2 text="Headline 2 (TyposUi.H2)" />
-  <TyposUi.H3 text="Headline 3 (TyposUi.H3)" />
-  <TyposUi.H4 text="Headline 4 (TyposUi.H4)" />
-  <TyposUi.H5 text="Headline 5 (TyposUi.H5)" />
-  <TyposUi.H6 text="Headline 6 (TyposUi.H6)" />
-  <TyposUi.Subtitle1 text="Subtitle 1 -- text-subtitle1 -- (TyposUi.Subtitle1)" />
-  <TyposUi.Subtitle2 text="Subtitle 2 -- text-subtitle2 -- (TyposUi.Subtitle2)" />
-  <TyposUi.Body1 text="Body 1 -- text-body1 --(TyposUi.Body1)" />
-  <TyposUi.Body2 text="Body 2 -- text-body2 --(TyposUi.Body2)" />
-  <TyposUi.Caption text="Caption -- text-caption --(TyposUi.Caption)" />
-  <TyposUi.Overline text="Overline -- text-overline --(TyposUi.Overline)" />
+  <TypoUi.H1 text="Headline 1 (TypoUi.H1)" />
+  <TypoUi.H2 text="Headline 2 (TypoUi.H2)" />
+  <TypoUi.H3 text="Headline 3 (TypoUi.H3)" />
+  <TypoUi.H4 text="Headline 4 (TypoUi.H4)" />
+  <TypoUi.H5 text="Headline 5 (TypoUi.H5)" />
+  <TypoUi.H6 text="Headline 6 (TypoUi.H6)" />
+  <TypoUi.Subtitle1 text="Subtitle 1 -- text-subtitle1 -- (TypoUi.Subtitle1)" />
+  <TypoUi.Subtitle2 text="Subtitle 2 -- text-subtitle2 -- (TypoUi.Subtitle2)" />
+  <TypoUi.Body1 text="Body 1 -- text-body1 --(TypoUi.Body1)" />
+  <TypoUi.Body2 text="Body 2 -- text-body2 --(TypoUi.Body2)" />
+  <TypoUi.Caption text="Caption -- text-caption --(TypoUi.Caption)" />
+  <TypoUi.Overline text="Overline -- text-overline --(TypoUi.Overline)" />
 </div>
 
 <div class="row q-mt-md">
@@ -52,7 +52,7 @@ export default {
 
 <script setup lang="ts">
 
-import { TyposUi } from '@/modules/gui/typos'
+import { TypoUi } from '@/modules/gui/typo'
 
 </script>
 

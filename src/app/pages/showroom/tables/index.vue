@@ -14,7 +14,7 @@
   >
 
   <template v-slot:top-left>
-    <TablesUi.TableActions
+    <TableUi.TableActions
       @refresh="log('refresh')"
       @create="log('create')"
     />
@@ -22,11 +22,11 @@
 
   <!-- need for text toggle button -->
   <template v-slot:header="props">
-    <TablesUi.TableColumnLabels v-bind="props" />
+    <TableUi.TableColumnLabels v-bind="props" />
   </template>
 
   <template v-slot:top-right>
-    <TablesUi.TableSearch v-model="filterRef" />
+    <TableUi.TableSearch v-model="filterRef" />
   </template>
 
   <template v-slot:body="props">
@@ -35,7 +35,7 @@
     <q-tr :props="props">
 
       <!-- first injected column values -->
-      <TablesUi.TableRowExpandButton
+      <TableUi.TableRowExpandButton
         v-bind="props"
         @toggle="props.expand = !props.expand"
       />
@@ -55,7 +55,7 @@
 
     </q-tr>
 
-    <TablesUi.TableTextPlain v-show="props.expand" v-bind="props" />
+    <TableUi.TableTextPlain v-show="props.expand" v-bind="props" />
 
     </template>
 
@@ -78,8 +78,8 @@ export default {
 
 import { ref } from 'vue'
 
-import { tableConsts, TablesUi } from '@/modules/gui/tables'
-import { ButtonUi } from '@/modules/gui/buttons'
+import { tableConsts, TableUi } from '@/modules/gui/table'
+import { ButtonUi } from '@/modules/gui/button'
 
 interface IRow {
   _id: string

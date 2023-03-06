@@ -5,7 +5,7 @@
 
     <ButtonUi.Button icon="menu" round flat @click="toggleLeftDrawer" />
 
-    <SeparatorsUi.RegularSeparator dark />
+    <SeparatorUi.RegularSeparator dark />
 
     <q-toolbar-title>
       <router-link :to="routes.ROOT" class="NoLinkStyles">
@@ -13,15 +13,15 @@
       </router-link>
     </q-toolbar-title>
 
-    <SeparatorsUi.RegularSeparator dark />
+    <SeparatorUi.RegularSeparator dark />
 
     <ButtonUi.ButtonRoute :to="routes.SETTINGS" label="Settings" flat />
 
-    <SeparatorsUi.RegularSeparator dark />
+    <SeparatorUi.RegularSeparator dark />
 
     <ButtonUi.ButtonRoute :to="routes.DUBUG" label="DUBUG" flat />
 
-    <SeparatorsUi.RegularSeparator dark />
+    <SeparatorUi.RegularSeparator dark />
 
     <div class="q-ml-md">
       Quasar <q-badge class="q-ml-sm" color="purple-6">v{{ $q.version }}</q-badge>
@@ -36,8 +36,8 @@
 
 import { appConsts } from 'src/app'
 import useAppStore from '@/stores/app'
-import { ButtonUi } from '@/modules/gui/buttons'
-import { SeparatorsUi } from '@/modules/gui/separators'
+import { ButtonUi } from '@/modules/gui/button'
+import { SeparatorUi } from '@/modules/gui/separator'
 
 const { routes, toggleLeftDrawer } = useAppStore()
 

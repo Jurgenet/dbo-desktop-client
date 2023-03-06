@@ -47,7 +47,7 @@
 
 import { ref, computed } from 'vue'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { notesClasses, notesFabrics } from '@/modules/db/subjects/notes'
 
 const props = defineProps<{

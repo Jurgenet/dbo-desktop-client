@@ -1,21 +1,13 @@
 <template>
 
-<PagesUi.Page class="q-gutter-y-md">
+<PageUi.Page class="q-gutter-y-md">
 
-  <ExpansionUi.ExpansionList>
-    <ExpansionUi.Expansion label="Filters" icon="filter_list" is-opened>
-      <OptionUi.OptionGroup
-        v-model="wowStore.filter"
-        :options="filterOptions"
-        inline
-      />
-    </ExpansionUi.Expansion>
-  </ExpansionUi.ExpansionList>
+  <Filters />
 
   <q-table
     :loading="wowStore.isBusy"
     :rows="wowStore.subjects"
-    :columns="wowTableUtils.getColumns()"
+    :columns="wowConsts.TABLE_COLUMNS"
     :rows-per-page-options="[15]"
     :filter="wowStore.filter"
     row-key="_id"
@@ -24,55 +16,57 @@
   >
 
     <template v-slot:top-left>
-      <TablesUi.TableActions
+      <TableUi.TableActions
         @refresh="wowStore.fetchAll"
         @create="onCreateOrEdit(null)"
       />
     </template>
 
     <template v-slot:top-right>
-      <TablesUi.TableSearch v-model="wowStore.filter" />
+      <TableUi.TableSearch v-model="wowStore.filter" />
     </template>
 
     <template v-slot:header="props">
-      <TablesUi.TableColumnLabels v-bind="props" />
+      <TableUi.TableColumnLabels v-bind="props" />
     </template>
 
     <template v-slot:body="props">
 
       <q-tr :props="props">
 
-        <TablesUi.TableRowExpandButton
+        <TableUi.TableRowExpandButton
           v-bind="props"
           @toggle="props.expand = !props.expand"
         />
 
         <q-td v-for="col in props.cols" :key="col.name" :props="props">
 
-          <TablesUi.TableCellValueCopiable :type="col.type" :value="col.value" />
+          <TableUi.TableCellValueCopiable :type="col.type" :value="col.value" />
 
           <div v-if="col.type === tableConsts.COLUMN_TYPES.COVER">
             <WowUi.Cover :src="col.value" />
           </div>
 
-          <TablesUi.TableCellValueActions :type="col.type">
+          <TableUi.TableCellValueBadges :type="col.type" :value="col.value" />
+
+          <TableUi.TableCellValueActions :type="col.type">
             <ButtonUi.ButtonMiniEdit @click="onCreateOrEdit(props.row)" />
             <ButtonUi.ButtonMiniRemove @click="onRemove(props.row._id)" />
-          </TablesUi.TableCellValueActions>
+          </TableUi.TableCellValueActions>
 
-          <TablesUi.TableCellValueRow :type="col.type" :value="col.value" />
+          <TableUi.TableCellValueRow :type="col.type" :value="col.value" />
 
         </q-td>
 
       </q-tr>
 
-      <TablesUi.TableTextPlain v-show="props.expand" v-bind="props" />
+      <TableUi.TableTextPlain v-show="props.expand" v-bind="props" />
 
     </template>
 
   </q-table>
 
-</PagesUi.Page>
+</PageUi.Page>
 
 </template>
 
@@ -89,28 +83,23 @@ export default {
 
 import { toRaw } from 'vue'
 
+import Filters from './filters/index.vue'
+
 import { useWowStore } from '@/stores/wow'
 
-import { PagesUi } from '@/modules/gui/pages'
-import { ExpansionUi } from '@/modules/gui/expansion'
-import { OptionUi, optionUtils } from '@/modules/gui/option'
-import { ButtonUi } from '@/modules/gui/buttons'
-import { TablesUi, tableConsts } from '@/modules/gui/tables'
-
-import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
-// import { clipboardUtils } from '@/modules/core/clipboard'
+import { PageUi } from '@/modules/gui/page'
+import { ButtonUi } from '@/modules/gui/button'
+import { TableUi, tableConsts } from '@/modules/gui/table'
+import { useCustomDialogConfirmation } from '@/modules/gui/dialog'
 import {
   WowUi,
   wowConsts,
   wowClasses,
   wowFabrics,
   useSubjectDialogCreation,
-  wowTableUtils,
 } from '@/modules/db/subjects/wow'
 
 const wowStore = useWowStore()
-
-const filterOptions = optionUtils.getOptionsFromList(Object.keys(wowClasses.ISubjectTypes))
 
 function onCreateOrEdit (subjectRow: wowClasses.ISubject| null) {
   const isCreating = subjectRow === null

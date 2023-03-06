@@ -10,5 +10,3 @@ export { default as wowApiService } from './api/wow.api.service'
 
 export { default as useWowStore } from './hooks/wow.hooks.store'
 export { default as useSubjectDialogCreation } from './hooks/wow.hooks.subject.dialogs.creation'
-
-export * as wowTableUtils from './utils/wow.utils.table'

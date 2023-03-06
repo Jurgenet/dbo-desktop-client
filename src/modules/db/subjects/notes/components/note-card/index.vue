@@ -23,7 +23,7 @@
         </expansionUi.Expansion>
       </expansionUi.ExpansionList>
 
-        <EditorsUi.MarkdownEditor v-model="state.text" class="markdownEditor" />
+        <EditorUi.MarkdownEditor v-model="state.text" class="markdownEditor" />
 
       </div>
 
@@ -41,7 +41,7 @@
         </expansionUi.Expansion>
       </expansionUi.ExpansionList>
 
-      <EditorsUi.MarkdownEditor v-model="note.dto.text" preview-only />
+      <EditorUi.MarkdownEditor v-model="note.dto.text" preview-only />
     </div>
 
   </div>
@@ -67,14 +67,14 @@ import ActionControls from './action-controls/index.vue'
 
 import { useNotesStore } from '@/stores/notes'
 
-import { tabsDto } from '@/modules/gui/tabs'
+import { tabDto } from '@/modules/gui/tab'
 import { ExpansionUi } from '@/modules/gui/expansion'
 import { MarkersUi } from '@/modules/db/subjects/markers'
-import { EditorsUi } from '@/modules/gui/editors'
+import { EditorUi } from '@/modules/gui/editor'
 import { NotesUi, notesClasses, notesFabrics, notesApiService } from '@/modules/db/subjects/notes'
 
 const props = defineProps<{
-  tab: tabsDto.ITab
+  tab: tabDto.ITab
 }>()
 
 // eslint-disable-next-line func-call-spacing

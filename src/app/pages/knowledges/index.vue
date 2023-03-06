@@ -1,6 +1,6 @@
 <template>
 
-<PagesUi.Page>
+<PageUi.Page>
 
   <q-table
     :loading="knowledgesStore.isBusy"
@@ -14,31 +14,31 @@
   >
 
   <template v-slot:top-left>
-    <TablesUi.TableActions
+    <TableUi.TableActions
       @refresh="knowledgesStore.fetchAll"
       @create="onCreateOrEdit(null)"
     />
   </template>
 
   <template v-slot:top-right>
-    <TablesUi.TableSearch v-model="knowledgesStore.filter" />
+    <TableUi.TableSearch v-model="knowledgesStore.filter" />
   </template>
 
   <template v-slot:header="props">
-    <TablesUi.TableColumnLabels v-bind="props" />
+    <TableUi.TableColumnLabels v-bind="props" />
   </template>
 
   <template v-slot:body="props">
 
     <q-tr :props="props">
 
-      <TablesUi.TableRowExpandButton
+      <TableUi.TableRowExpandButton
         v-bind="props"
         @toggle="props.expand = !props.expand"
       />
 
       <q-td v-for="col in props.cols" :key="col.name" :props="props">
-        <TablesUi.TableRowActions
+        <TableUi.TableRowActions
           v-bind="{ col, row: props.row }"
           @edit="onCreateOrEdit"
           @remove="onRemove"
@@ -48,15 +48,15 @@
 
     </q-tr>
 
-    <TablesUi.TableTextHtml v-show="props.expand" v-bind="props" />
+    <TableUi.TableTextHtml v-show="props.expand" v-bind="props" />
 
     </template>
 
   </q-table>
 
-  <PreloadersUi.Regular :is-visible="knowledgesStore.isBusy" />
+  <PreloaderUi.Preloader :is-visible="knowledgesStore.isBusy" />
 
-</PagesUi.Page>
+</PageUi.Page>
 
 </template>
 
@@ -75,10 +75,10 @@ import { toRaw } from 'vue'
 
 import { useKnowledgesStore } from '@/stores/knowledges'
 
-import { PagesUi } from '@/modules/gui/pages'
-import { TablesUi } from '@/modules/gui/tables'
-import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
-import { PreloadersUi } from '@/modules/gui/preloaders'
+import { PageUi } from '@/modules/gui/page'
+import { TableUi } from '@/modules/gui/table'
+import { useCustomDialogConfirmation } from '@/modules/gui/dialog'
+import { PreloaderUi } from '@/modules/gui/preloader'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import {
   knowledgesConsts,

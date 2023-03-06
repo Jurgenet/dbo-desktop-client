@@ -81,7 +81,7 @@
 
 import { useNotesStore } from '@/stores/notes'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { InputUi } from '@/modules/gui/input'
 import { PaginationUi } from '@/modules/core/pagination'
 import { MarkersUi } from '@/modules/db/subjects/markers'

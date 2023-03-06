@@ -38,7 +38,7 @@ import { ref, watch } from 'vue'
 
 import { useMarkersStore } from '@/stores/markers'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { selectUtils } from '@/modules/gui/select'
 import {
   markersClasses,

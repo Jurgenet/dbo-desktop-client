@@ -1,9 +1,9 @@
 <template>
 
-<PagesUi.Page>
+<PageUi.Page>
   <div class="q-pa-sm">{{ appConsts.APP_NAME }}: {{ appConsts.APP_VERSION }}</div>
   <div class="q-pa-sm">Quasar: {{ $q.version }}</div>
-</PagesUi.Page>
+</PageUi.Page>
 
 </template>
 
@@ -18,7 +18,7 @@ export default {
 
 <script setup lang="ts">
 
-import { PagesUi } from '@/modules/gui/pages'
+import { PageUi } from '@/modules/gui/page'
 
 import { appConsts } from '@/app'
 

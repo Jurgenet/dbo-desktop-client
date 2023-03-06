@@ -1,14 +1,14 @@
 <template>
 
-<PagesUi.Page no-padding>
+<PageUi.Page no-padding>
 
-  <BarsUi.Top title="Session log">
+  <BarUi.Top title="Session log">
     <template #right>
       <div class="row q-gutter-x-sm">
         <ButtonUi.Button label="send test notices" dense disable @click="onSendTestMessages" />
       </div>
     </template>
-  </BarsUi.Top>
+  </BarUi.Top>
 
   <div class="q-pa-md flex justify-center items-end" style="width: 100%">
     <div class="col" style="width: 100%">
@@ -16,7 +16,7 @@
     </div>
   </div>
 
-</PagesUi.Page>
+</PageUi.Page>
 
 </template>
 
@@ -31,9 +31,9 @@ export default {
 
 <script setup lang="ts">
 
-import { PagesUi } from '@/modules/gui/pages'
-import { BarsUi } from '@/modules/gui/bars'
-import { ButtonUi } from '@/modules/gui/buttons'
+import { PageUi } from '@/modules/gui/page'
+import { BarUi } from '@/modules/gui/bar'
+import { ButtonUi } from '@/modules/gui/button'
 import { LoggerUi } from '@/modules/core/logger'
 import { useLoggerStore } from '@/stores/logger'
 

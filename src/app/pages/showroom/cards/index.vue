@@ -2,17 +2,17 @@
 
 <div class="row q-gutter-x-sm">
 
-  <CardsUi.Card topic="Some Topic">
+  <CardUi.Card topic="Some Topic">
 
-    <CardsUi.CardSection>
+    <CardUi.CardSection>
       <div>Section Content</div>
-    </CardsUi.CardSection>
+    </CardUi.CardSection>
 
-    <CardsUi.CardSection>
+    <CardUi.CardSection>
       <div>Other Section Content</div>
-    </CardsUi.CardSection>
+    </CardUi.CardSection>
 
-  </CardsUi.Card>
+  </CardUi.Card>
 
 </div>
 
@@ -29,6 +29,6 @@ export default {
 
 <script setup lang="ts">
 
-import { CardsUi } from '@/modules/gui/cards'
+import { CardUi } from '@/modules/gui/card'
 
 </script>

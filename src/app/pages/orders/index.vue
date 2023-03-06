@@ -1,6 +1,6 @@
 <template>
 
-<PagesUi.Page>
+<PageUi.Page>
 
   <q-table
     :loading="ordersStore.isBusy"
@@ -14,31 +14,31 @@
   >
 
     <template v-slot:top-left>
-      <TablesUi.TableActions
+      <TableUi.TableActions
         @refresh="ordersStore.fetchAll"
         @create="onCreateOrEdit(null)"
       />
     </template>
 
     <template v-slot:top-right>
-      <TablesUi.TableSearch v-model="ordersStore.filter" />
+      <TableUi.TableSearch v-model="ordersStore.filter" />
     </template>
 
     <template v-slot:header="props">
-      <TablesUi.TableColumnLabels v-bind="props" />
+      <TableUi.TableColumnLabels v-bind="props" />
     </template>
 
     <template v-slot:body="props">
 
       <q-tr :props="props">
 
-        <TablesUi.TableRowExpandButton
+        <TableUi.TableRowExpandButton
           v-bind="props"
           @toggle="props.expand = !props.expand"
         />
 
         <q-td v-for="col in props.cols" :key="col.name" :props="props">
-          <TablesUi.TableRowActions
+          <TableUi.TableRowActions
             v-bind="{ col, row: props.row }"
             @edit="onCreateOrEdit"
             @remove="onRemove"
@@ -48,15 +48,15 @@
 
       </q-tr>
 
-      <TablesUi.TableTextPlain v-show="props.expand" v-bind="props" />
+      <TableUi.TableTextPlain v-show="props.expand" v-bind="props" />
 
     </template>
 
   </q-table>
 
-  <PreloadersUi.Regular :is-visible="ordersStore.isBusy" />
+  <PreloaderUi.Preloader :is-visible="ordersStore.isBusy" />
 
-</PagesUi.Page>
+</PageUi.Page>
 
 </template>
 
@@ -75,10 +75,10 @@ import { toRaw } from 'vue'
 
 import { useOrdersStore } from '@/stores/orders'
 
-import { PagesUi } from '@/modules/gui/pages'
-import { TablesUi } from '@/modules/gui/tables'
-import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
-import { PreloadersUi } from '@/modules/gui/preloaders'
+import { PageUi } from '@/modules/gui/page'
+import { TableUi } from '@/modules/gui/table'
+import { useCustomDialogConfirmation } from '@/modules/gui/dialog'
+import { PreloaderUi } from '@/modules/gui/preloader'
 import { clipboardUtils } from '@/modules/core/clipboard'
 import {
   ordersConsts,

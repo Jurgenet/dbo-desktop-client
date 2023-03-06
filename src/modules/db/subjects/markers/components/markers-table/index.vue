@@ -18,7 +18,7 @@
   </template>
 
   <template v-slot:top-right>
-    <TablesUi.TableSearch v-model="markersStore.filter" />
+    <TableUi.TableSearch v-model="markersStore.filter" />
   </template>
 
   <template v-slot:body-cell-example="props">
@@ -39,7 +39,7 @@
 
 </q-table>
 
-<PreloadersUi.Regular :is-visible="markersStore.isBusy" />
+<PreloaderUi.Preloader :is-visible="markersStore.isBusy" />
 
 </template>
 
@@ -49,10 +49,10 @@ import { toRaw } from 'vue'
 
 import { useMarkersStore } from '@/stores/markers'
 
-import { TablesUi } from '@/modules/gui/tables'
-import { useCustomDialogConfirmation } from '@/modules/gui/dialogs'
-import { PreloadersUi } from '@/modules/gui/preloaders'
-import { ButtonUi } from '@/modules/gui/buttons'
+import { TableUi } from '@/modules/gui/table'
+import { useCustomDialogConfirmation } from '@/modules/gui/dialog'
+import { PreloaderUi } from '@/modules/gui/preloader'
+import { ButtonUi } from '@/modules/gui/button'
 import {
   markersConsts,
   markersClasses,

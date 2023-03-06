@@ -3,11 +3,13 @@
 <q-select
   :model-value="modelValue"
   :options="options"
-  placeholder="Type"
+  :label="label"
+  :multiple="multiple"
+  :use-chips="useChips"
   dense
   autofocus
   outlined
-  @update:model-value="emits('update:modelValue', $event)"
+  @update:model-value="emits('update:model-value', $event)"
 />
 
 </template>
@@ -26,15 +28,19 @@ export default {
 // @see https://quasar.dev/vue-components/select
 
 withDefaults(defineProps<{
-  modelValue: string
+  modelValue: string | string[]
   options: string[]
+  label?: string
+  multiple?: boolean
+  useChips?: boolean
 }>(), {
-  //
+  multiple: false,
+  useChips: true,
 })
 
 // eslint-disable-next-line func-call-spacing
 const emits = defineEmits<{
-  (e: 'update:modelValue', value: string): void
+  (e: 'update:model-value', modelValue: string): void
 }>()
 
 </script>

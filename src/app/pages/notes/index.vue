@@ -1,6 +1,6 @@
 <template>
 
-<PagesUi.Page no-padding>
+<PageUi.Page no-padding>
 
   <q-tabs
     v-model="notesStore.activeTab"
@@ -16,7 +16,7 @@
 
     <q-tab name="root" label="manager" />
 
-    <TabsUi.DynamicTab
+    <TabUi.DynamicTab
       v-for="tab in notesStore.tabs" :key="tab.name"
       :name="tab.name"
       :label="tab.data.title ?? tab.label"
@@ -37,9 +37,9 @@
     </q-tab-panel>
   </q-tab-panels>
 
-  <PreloadersUi.Regular :is-visible="notesStore.isBusy" />
+  <PreloaderUi.Preloader :is-visible="notesStore.isBusy" />
 
-</PagesUi.Page>
+</PageUi.Page>
 
 </template>
 
@@ -56,9 +56,9 @@ export default {
 
 import { useNotesStore } from '@/stores/notes'
 
-import { PagesUi } from '@/modules/gui/pages'
-import { TabsUi } from '@/modules/gui/tabs'
-import { PreloadersUi } from '@/modules/gui/preloaders'
+import { PageUi } from '@/modules/gui/page'
+import { TabUi } from '@/modules/gui/tab'
+import { PreloaderUi } from '@/modules/gui/preloader'
 import { NotesUi, notesClasses } from '@/modules/db/subjects/notes'
 
 const notesStore = useNotesStore()

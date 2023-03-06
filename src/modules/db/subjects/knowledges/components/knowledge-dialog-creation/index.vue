@@ -74,14 +74,14 @@
               <q-toggle v-model="knowledgeRef.dto.isActive" label="Active" left-label />
               <q-toggle v-model="knowledgeRef.dto.isOnline" label="OnLine" left-label />
               <q-toggle v-model="knowledgeRef.dto.isDone" label="Done" left-label />
-              <RatingsUi.RegularRating v-model="knowledgeRef.dto.rating" size="3.5em" />
+              <RatingUi.Rating v-model="knowledgeRef.dto.rating" size="3.5em" />
             </div>
 
           </div>
         </expansionUi.Expansion>
 
         <ExpansionUi.Expansion label="Content Data">
-          <EditorsUi.TextEditor v-model="knowledgeRef.dto.text" />
+          <EditorUi.TextEditor v-model="knowledgeRef.dto.text" />
         </expansionUi.Expansion>
 
       <!-- TOOD: rating -->
@@ -89,7 +89,7 @@
       </div>
     </q-card-section>
 
-    <CardsUi.CardActionsCancelApply
+    <CardUi.CardActionsCancelApply
       @cancel="onDialogHide"
       @apply="onApply"
     />
@@ -104,11 +104,11 @@
 import { ref } from 'vue'
 import { useDialogPluginComponent } from 'quasar'
 
-import { CardsUi } from '@/modules/gui/cards'
+import { CardUi } from '@/modules/gui/card'
 import { ExpansionUi } from '@/modules/gui/expansion'
 import { InputUi } from '@/modules/gui/input'
-import { EditorsUi } from '@/modules/gui/editors'
-import { RatingsUi } from '@/modules/gui/ratings'
+import { EditorUi } from '@/modules/gui/editor'
+import { RatingUi } from '@/modules/gui/rating'
 
 import { knowledgesClasses } from '@/modules/db/subjects/knowledges'
 

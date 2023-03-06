@@ -16,6 +16,13 @@ export default function useWowStore () {
   const subjects: Ref<wowClasses.ISubject[]> = ref([])
   const count = computed(() => subjects.value.length)
 
+  // filtered data
+  const professions = computed(() => {
+    return subjects.value
+      .filter((s: wowClasses.ISubject) => s.dto.type === 'profession')
+      .map((s: wowClasses.ISubject) => s.dto.titleEn)
+  })
+
   // crud
   async function fetchAll (params: unknown = {}) {
     return asyncState.runTask(async () => {
@@ -54,6 +61,8 @@ export default function useWowStore () {
     // data
     subjects,
     count,
+    // filtered data
+    professions,
     // filters
     filter,
     // crud

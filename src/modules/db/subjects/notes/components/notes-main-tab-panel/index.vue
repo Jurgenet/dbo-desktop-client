@@ -53,7 +53,7 @@ import { ref } from 'vue'
 
 import { useNotesStore } from '@/stores/notes'
 
-import { ButtonUi } from '@/modules/gui/buttons'
+import { ButtonUi } from '@/modules/gui/button'
 import { NotesUi, notesClasses } from '@/modules/db/subjects/notes'
 
 // eslint-disable-next-line func-call-spacing

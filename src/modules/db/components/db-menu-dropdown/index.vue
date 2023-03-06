@@ -18,9 +18,9 @@
         <DbUi.DbMenuDropdownItem title="Markers" />
       </MarkersUi.MarkersDialogTable>
 
-      <FilesUi.FileDialogUploadOpener>
+      <FileUi.FileDialogUploadOpener>
         <DbUi.DbMenuDropdownItem title="Files" icon="cloud_upload" />
-      </FilesUi.FileDialogUploadOpener>
+      </FileUi.FileDialogUploadOpener>
     </div>
 
     <q-separator />
@@ -41,6 +41,6 @@
 
 import { DbUi } from '@/modules/db'
 import { MarkersUi } from '@/modules/db/subjects/markers'
-import { FilesUi } from '@/modules/gui/files'
+import { FileUi } from '@/modules/gui/file'
 
 </script>
